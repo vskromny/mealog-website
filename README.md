@@ -18,13 +18,31 @@ between the two branches without any other change.
 
 ```
 index.html                 the page itself
+site.webmanifest           app name, theme colour and icon set
 assets/dc-runtime.js       template runtime that renders <x-dc> markup
 assets/components.js       page components (image-slot, …)
 assets/react*.min.js       React 18.3.1 UMD builds, loaded locally
 assets/sora-*.woff2        Sora webfont (latin + latin-ext subsets)
+assets/logo/               brand assets (see below)
 .nojekyll                  serve files as-is, no Jekyll build
 src/mealog-website.bundle.html   original single-file export (provenance only)
 ```
+
+## Brand assets
+
+```
+assets/logo/mealog-logo.svg        wordmark mark, green on transparent — used in the nav and footer
+assets/logo/mealog-icon.svg        app icon, white mark on a green rounded square
+assets/logo/favicon-32.png         32×32 PNG favicon
+assets/logo/favicon-180.png        180×180 apple-touch-icon
+assets/logo/mealog-logo-1024.png   1024×1024 raster mark
+assets/logo/mealog-icon-1024.png   1024×1024 raster app icon — also the Open Graph/Twitter preview image
+```
+
+The Open Graph and Twitter image URLs in `index.html` are absolute (link
+unfurlers do not resolve relative paths) and point at
+`https://vskromny.github.io/mealog-website/`. Update them if the site moves to a
+custom domain.
 
 Everything is served from this repo — the page makes no third-party requests at
 runtime. `index.html` maps the runtime's CDN URLs to the local React copies via

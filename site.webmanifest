@@ -1,0 +1,15 @@
+{
+  "name": "Mealog",
+  "short_name": "Mealog",
+  "description": "AI meal tracking for iPhone — snap a photo or say it out loud.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0B0E11",
+  "theme_color": "#0B0E11",
+  "icons": [
+    { "src": "assets/logo/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "assets/logo/favicon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/logo/mealog-icon-1024.png", "sizes": "1024x1024", "type": "image/png" },
+    { "src": "assets/logo/mealog-icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
