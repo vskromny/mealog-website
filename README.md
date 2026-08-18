@@ -2,17 +2,16 @@
 
 Marketing site for Mealog, served as a static site on GitHub Pages.
 
-Live URL (once Pages is enabled): https://vskromny.github.io/mealog-website/
+Live at **https://vskromny.github.io/mealog-website/**
 
-## Enabling GitHub Pages
+## Deployment
 
-Settings → Pages → *Build and deployment*:
+`.github/workflows/deploy-pages.yml` publishes the repo root on every push to
+`main`, then fetches the live URL and fails the run if the page or any of its
+assets does not come back `200`.
 
-- **Source:** Deploy from a branch
-- **Branch:** `main` — folder `/ (root)`
-
-The same content also lives on `develop`, so the Pages source can be switched
-between the two branches without any other change.
+The same content also lives on `develop`, so the Pages source can be pointed at
+either branch from Settings → Pages without any other change.
 
 ## Layout
 
