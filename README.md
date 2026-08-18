@@ -20,10 +20,10 @@ between the two branches without any other change.
 index.html                 the page itself
 site.webmanifest           app name, theme colour and icon set
 assets/dc-runtime.js       template runtime that renders <x-dc> markup
-assets/components.js       page components (image-slot, …)
 assets/react*.min.js       React 18.3.1 UMD builds, loaded locally
 assets/sora-*.woff2        Sora webfont (latin + latin-ext subsets)
 assets/logo/               brand assets (see below)
+assets/screens/            app screenshots used in "See it in action"
 .nojekyll                  serve files as-is, no Jekyll build
 src/mealog-website.bundle.html   original single-file export (provenance only)
 ```
@@ -62,5 +62,31 @@ loaded over HTTP.
 
 `index.html` uses `<x-dc>` templates with `{{ }}` bindings; page data (features,
 steps, FAQ, App Store URL) lives in the `<script type="text/x-dc">` block at the
-bottom of the file. The `<image-slot>` elements in the *See it in action*
-section are placeholders — drop in real screenshots there when they are ready.
+bottom of the file.
+
+## Screenshots
+
+`assets/screens/` holds the app screenshots shown in *See it in action*, each as
+WebP at 660px and 1320px wide (served via `srcset`, so retina screens get the
+larger file):
+
+| Screen     | Where it appears                        |
+| ---------- | --------------------------------------- |
+| `today`    | main three-up grid                      |
+| `trends`   | main three-up grid                      |
+| `calendar` | main three-up grid                      |
+| `habits`   | secondary row below the grid            |
+| `export`   | secondary row below the grid            |
+
+To swap one out, re-export from the same 1320×2868 source frame so the
+`aspect-ratio: 1320/2868` containers stay exact:
+
+```sh
+python3 -c "
+from PIL import Image
+im = Image.open('new-shot.png').convert('RGB')
+for w in (660, 1320):
+    im.resize((w, round(im.height * w / im.width)), Image.LANCZOS).save(
+        f'assets/screens/today-{w}.webp', 'webp', quality=82, method=6)
+"
+```
