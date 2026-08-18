@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Publish to GitHub Pages
 
 on:
   push:
@@ -6,56 +6,54 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
-# Let a running deploy finish; queue at most one more behind it.
+# Let a publish finish before the next one starts; queue at most one behind.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      SITE_URL: https://vskromny.github.io/mealog-website/
     steps:
       - uses: actions/checkout@v4
 
-      # enablement: true turns Pages on for the repo if it is not configured
-      # yet, so no manual switch in Settings is needed.
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      # The site is plain static files at the repo root — nothing to build.
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
-
-      # Fetch what was actually published, so a green run means a working
-      # page rather than just a successful upload.
-      - name: Verify the deployed site
+      # GitHub Pages serves the gh-pages branch for this repo, so publishing
+      # means mirroring main onto it. main stays the branch you edit.
+      - name: Mirror main onto gh-pages
         run: |
-          url="${{ steps.deployment.outputs.page_url }}"
-          echo "Checking $url"
-          for i in $(seq 1 10); do
-            code=$(curl -sS -o page.html -w '%{http_code}' "$url" || echo 000)
-            [ "$code" = "200" ] && break
-            echo "attempt $i: HTTP $code — retrying"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          printf '{"sha":"%s","ref":"%s","built":"%s"}\n' \
+            "$GITHUB_SHA" "$GITHUB_REF_NAME" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > build-info.json
+          git add build-info.json
+          git commit -m "Publish $GITHUB_SHA"
+          git push --force origin HEAD:gh-pages
+
+      # Wait for the Pages build to serve THIS commit, not just any page.
+      - name: Wait for the deploy to go live
+        run: |
+          for i in $(seq 1 30); do
+            live=$(curl -sS "$SITE_URL/build-info.json?cachebust=$RANDOM" || true)
+            case "$live" in *"$GITHUB_SHA"*) echo "live: $live"; exit 0;; esac
+            echo "attempt $i: not live yet"
             sleep 10
           done
-          [ "$code" = "200" ] || { echo "::error::page returned HTTP $code"; exit 1; }
+          echo "::error::$GITHUB_SHA did not go live within 5 minutes"
+          exit 1
+
+      # A green run should mean a working page, not just a successful push.
+      - name: Verify the published page
+        run: |
+          curl -sSf -o page.html "$SITE_URL"
           grep -q "<title>Mealog" page.html || { echo "::error::title missing"; exit 1; }
           for asset in assets/dc-runtime.js assets/logo/mealog-logo.svg \
                        assets/screens/today-660.webp site.webmanifest; do
-            acode=$(curl -sS -o /dev/null -w '%{http_code}' "$url$asset")
-            echo "$asset -> $acode"
-            [ "$acode" = "200" ] || { echo "::error::$asset returned HTTP $acode"; exit 1; }
+            code=$(curl -sS -o /dev/null -w '%{http_code}' "$SITE_URL$asset")
+            echo "$asset -> $code"
+            [ "$code" = "200" ] || { echo "::error::$asset returned HTTP $code"; exit 1; }
           done
-          echo "Live and complete: $url"
+          echo "Live and complete: $SITE_URL"

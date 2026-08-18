@@ -6,12 +6,19 @@ Live at **https://vskromny.github.io/mealog-website/**
 
 ## Deployment
 
-`.github/workflows/deploy-pages.yml` publishes the repo root on every push to
-`main`, then fetches the live URL and fails the run if the page or any of its
-assets does not come back `200`.
+Edit on `main`. `.github/workflows/deploy-pages.yml` runs on every push to it,
+mirrors the tree onto `gh-pages` (the branch Pages serves), waits until the live
+site reports that commit in `build-info.json`, and fails the run if the page or
+any of its assets does not come back `200`. So a green run means the change is
+actually live.
 
-The same content also lives on `develop`, so the Pages source can be pointed at
-either branch from Settings → Pages without any other change.
+`gh-pages` is generated — never commit to it by hand. `develop` carries the same
+content as `main` but does not publish.
+
+Pages turned itself on in legacy branch mode when `gh-pages` first appeared,
+which is why the mirror exists. To serve `main` directly instead, go to
+Settings → Pages and set the source to `main` / `/ (root)`, then delete the
+mirror step (the verification steps still work as-is).
 
 ## Layout
 
