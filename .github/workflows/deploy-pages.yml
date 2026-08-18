@@ -51,7 +51,8 @@ jobs:
           curl -sSf -o page.html "$SITE_URL"
           grep -q "<title>Mealog" page.html || { echo "::error::title missing"; exit 1; }
           for asset in assets/dc-runtime.js assets/logo/mealog-logo.svg \
-                       assets/screens/today-660.webp site.webmanifest; do
+                       assets/screens/today-660.webp site.webmanifest \
+                       privacy.html terms.html; do
             code=$(curl -sS -o /dev/null -w '%{http_code}' "$SITE_URL$asset")
             echo "$asset -> $code"
             [ "$code" = "200" ] || { echo "::error::$asset returned HTTP $code"; exit 1; }

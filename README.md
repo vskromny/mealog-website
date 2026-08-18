@@ -24,10 +24,13 @@ mirror step (the verification steps still work as-is).
 
 ```
 index.html                 the page itself
+privacy.html               privacy policy
+terms.html                 terms of service
 site.webmanifest           app name, theme colour and icon set
 assets/dc-runtime.js       template runtime that renders <x-dc> markup
 assets/react*.min.js       React 18.3.1 UMD builds, loaded locally
 assets/sora-*.woff2        Sora webfont (latin + latin-ext subsets)
+assets/pages.css           styles for privacy.html and terms.html
 assets/logo/               brand assets (see below)
 assets/screens/            app screenshots used in "See it in action"
 .nojekyll                  serve files as-is, no Jekyll build
@@ -69,6 +72,17 @@ loaded over HTTP.
 `index.html` uses `<x-dc>` templates with `{{ }}` bindings; page data (features,
 steps, FAQ, App Store URL) lives in the `<script type="text/x-dc">` block at the
 bottom of the file.
+
+## Legal pages
+
+`privacy.html` and `terms.html` are plain HTML — no template runtime — sharing
+`assets/pages.css`. They are linked from the landing page footer and from each
+other, and the deploy workflow checks both return `200`.
+
+They state as fact that meal logs stay on the device, that photos/voice go to
+OpenAI through a Vercel pass-through with no retention, and that there is no
+analytics. Keep them in step with what the app actually does — if the app gains
+an account, sync or an SDK, both pages need updating before that ships.
 
 ## Screenshots
 

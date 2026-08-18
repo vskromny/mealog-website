@@ -1,0 +1,58 @@
+/* Shared styles for the standalone legal pages. The landing page carries its
+   own inline styles; these pages are plain HTML with no runtime. */
+@font-face {
+  font-family: 'Sora'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sora'; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sora'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("sora-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sora'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("sora-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #fff; color: #16181D; font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased; line-height: 1.65;
+}
+a { color: #16A34A; text-decoration: none; }
+a:hover { color: #15803D; }
+
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(11,14,17,.9); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.06); }
+.nav-in { max-width: 760px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand span { font-weight: 800; font-size: 18px; color: #fff; letter-spacing: -.02em; }
+.nav a.back { font-size: 13px; color: #9AA4AE; }
+.nav a.back:hover { color: #4ADE80; }
+
+main { max-width: 760px; margin: 0 auto; padding: 56px 24px 72px; }
+.eyebrow { font-size: 13px; font-weight: 700; color: #16A34A; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+h1 { font-size: clamp(28px,5vw,40px); font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin-bottom: 10px; }
+.dateline { font-size: 13px; color: #8A929C; margin-bottom: 36px; }
+h2 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; margin: 40px 0 12px; }
+h3 { font-size: 15px; font-weight: 700; margin: 22px 0 8px; }
+p, li { font-size: 15px; color: #3F464F; text-wrap: pretty; }
+p + p { margin-top: 12px; }
+ul { margin: 12px 0 0 20px; }
+li { margin-bottom: 8px; }
+.lead { font-size: 16px; color: #16181D; }
+.callout { background: #F7F8FA; border: 1px solid #ECEEF1; border-left: 3px solid #16A34A; border-radius: 12px; padding: 18px 20px; margin: 24px 0; }
+.callout p { font-size: 14px; }
+address { font-style: normal; font-size: 15px; color: #3F464F; margin-top: 12px; line-height: 1.8; }
+
+footer { background: #0B0E11; color: #5A616B; }
+.foot-in { max-width: 760px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; font-size: 12px; }
+.foot-in nav { display: flex; gap: 18px; }
+.foot-in a { color: #9AA4AE; }
+.foot-in a:hover { color: #4ADE80; }
