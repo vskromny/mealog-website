@@ -85,10 +85,23 @@ because they help the estimate. Your <strong>body details — age, height, weigh
 level — are not sent</strong>; they stay on your device. If you use the in-app Coach, a summary of
 your recent log is sent to OpenAI so it can answer you, together with whatever your question
 requires it to look up.</p>
-<p>The request passes through a small backend of ours hosted on <strong>Vercel</strong>, which
-forwards it to OpenAI. Vercel, as our hosting provider, processes the technical connection data
-needed to do that — such as your IP address and the time of the request; it does not store the
-photo, voice transcript, text or the estimate.</p>
+<p>The request passes through a small backend of ours — hosted on <strong>Cloudflare</strong>, with
+<strong>Vercel</strong> kept as a fallback used only if Cloudflare is unreachable — which forwards
+it to OpenAI. As our hosting provider, it processes the technical connection data needed to do that,
+such as your IP address and the time of the request; it does not store the photo, voice transcript,
+text or the estimate.</p>
+<p>To keep the service available to everyone, our backend limits AI requests per app installation
+each day. With each AI request, the app sends a random per-installation identifier created by iOS
+(Apple's "identifier for vendor"); it is not your name, account or email, not an advertising
+identifier, and it resets when you remove the app. The backend (Cloudflare) uses it only as the key
+of a counter — the number of AI requests that day (UTC) — and deletes that counter within 2 days
+after your last AI request. The identifier travels in the same request as your meal, but it is not
+stored with your photos, voice, text, profile or estimates. If an app version sends no identifier,
+the counter is keyed to your IP address instead, with the same deletion period. A separate monthly
+usage total is kept without any identifier. Legal basis: our legitimate interest in keeping the
+service available and its costs under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can
+object by email or simply turn off AI estimation. The identifier is never used to track you across
+apps or websites.</p>
 <p>OpenAI states that content submitted through its API is not used to train its models, and may
 retain the inputs for a short period (currently up to 30 days) to monitor for misuse before
 deleting them. OpenAI processes the request in the <strong>United States</strong>, which does not
@@ -115,7 +128,15 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
   <li><strong>OpenAI</strong> (OpenAI Ireland Ltd., Dublin; processing also by OpenAI OpCo, LLC,
       in the United States) — analyses photos, voice transcripts and text to produce nutrition
       estimates.</li>
-  <li><strong>Vercel</strong> — hosts the pass-through backend that forwards those requests.</li>
+  <li><strong>Cloudflare</strong> (Cloudflare, Inc., USA) — runs the pass-through backend that
+      forwards AI requests to OpenAI and enforces the daily limit; requests are handled in a
+      Cloudflare data centre that may be outside Switzerland and the EU. It processes technical
+      connection data (such as IP address and time) and the installation identifier, keeps no
+      request logs, and does not store the photo, transcript, text or estimate. Transfers rest on
+      the EU Standard Contractual Clauses (with the Swiss addendum) in Cloudflare's data processing
+      agreement.</li>
+  <li><strong>Vercel</strong> — a fallback host for the same pass-through backend, used only if
+      Cloudflare is unreachable.</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
       Store, your purchases and iCloud.</li>
@@ -125,7 +146,8 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
 <h2>7. How long anything is kept</h2>
 <p>On our side we keep no photos, voice transcripts, text or estimates. OpenAI may hold the inputs
 for up to 30 days as described above. On your side, entries stay until you delete them or remove the
-app — and, if iCloud sync is on, until you delete them from your synced devices.</p>
+app — and, if iCloud sync is on, until you delete them from your synced devices. The daily-limit
+counter on our backend is deleted within 2 days after your last AI request.</p>
 
 <h2>8. Your rights</h2>
 <p>Under the Swiss Federal Act on Data Protection — and under the GDPR if you are in the EU or
@@ -136,8 +158,10 @@ Information Commissioner, and in the EU/EEA your local data-protection authority
 <p>In practice most of these you can exercise yourself in seconds, because the data is on your
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
 it elsewhere, withdraw AI consent and clear or disable your profile and Apple Health access in
-Settings. Because we keep no copy of your content and hold nothing that identifies you, we cannot
-look up or retrieve the short-lived copy OpenAI may hold; a request about that goes to OpenAI. For
+Settings. Because we keep no copy of your content — and hold no name, account or content of yours,
+only the random installation identifier described in section 4, which we cannot link to a person
+unless you give it to us — we cannot look up or retrieve the short-lived copy OpenAI may hold; a
+request about that goes to OpenAI. For
 anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a> and you will
 get an answer within 30 days.</p>
 
