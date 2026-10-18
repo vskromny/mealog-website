@@ -88,10 +88,8 @@ gesendet</strong>; sie bleiben auf deinem Gerät. Wenn du den integrierten Coach
 Zusammenfassung deines jüngsten Protokolls an OpenAI gesendet, damit er dir antworten kann, zusammen
 mit dem, was deine Frage ihn nachschlagen lässt.</p>
 <p>Die Anfrage läuft über ein kleines Backend von uns, das bei <strong>Vercel</strong> gehostet ist
-und sie an OpenAI weiterleitet. Das Backend speichert weder das Foto noch das Sprachtranskript, den
-Text oder die Schätzung. Um die Betriebskosten zu begrenzen, führt es gegebenenfalls einen einzigen
-aggregierten Zähler der Gesamtnutzung pro Monat – nur eine Zahl, ohne Inhalte und ohne etwas, das
-dich oder dein Gerät identifiziert.</p>
+und sie an OpenAI weiterleitet – und nicht mehr: Es speichert weder das Foto noch das
+Sprachtranskript, den Text oder die Schätzung.</p>
 <p>OpenAI gibt an, dass über seine API übermittelte Inhalte nicht zum Training seiner Modelle
 verwendet werden, und kann die Eingaben für kurze Zeit (derzeit bis zu 30 Tage) zur Missbrauchs­kontrolle
 aufbewahren, bevor sie gelöscht werden. OpenAI verarbeitet die Anfrage in den Vereinigten Staaten;
@@ -117,8 +115,6 @@ Daten.</p>
   <li><strong>OpenAI</strong> – wertet Fotos, Sprachtranskripte und Text aus, um Nährwertschätzungen
       zu erstellen (Verarbeitung in den Vereinigten Staaten).</li>
   <li><strong>Vercel</strong> – hostet das durchreichende Backend, das diese Anfragen weiterleitet.</li>
-  <li><strong>Upstash</strong> – hostet den oben beschriebenen aggregierten monatlichen Nutzungszähler,
-      sofern er im Einsatz ist; er enthält eine Zahl, keine Inhalte und keine Identität.</li>
   <li><strong>Apple</strong> – vertreibt die App und wickelt Käufe ab; und, falls du die
       iCloud-Synchronisierung aktivierst, speichert deine private iCloud-Datenbank. Für den App Store,
       deine Käufe und iCloud gilt Apples eigene Datenschutzerklärung.</li>
@@ -126,11 +122,10 @@ Daten.</p>
 <p>Das ist die vollständige Liste. Niemand sonst erhält deine Daten.</p>
 
 <h2>7. Wie lange etwas aufbewahrt wird</h2>
-<p>Auf unserer Seite bewahren wir keine Fotos, Sprachtranskripte, Texte oder Schätzungen auf;
-höchstens eine anonyme monatliche Nutzungssumme, die nichts über dich enthält. OpenAI kann die
-Eingaben wie oben beschrieben bis zu 30 Tage aufbewahren. Auf deiner Seite bleiben Einträge, bis du
-sie oder die App löschst – und, falls die iCloud-Synchronisierung aktiv ist, bis du sie auf deinen
-synchronisierten Geräten löschst.</p>
+<p>Auf unserer Seite bewahren wir keine Fotos, Sprachtranskripte, Texte oder Schätzungen auf.
+OpenAI kann die Eingaben wie oben beschrieben bis zu 30 Tage aufbewahren. Auf deiner Seite bleiben
+Einträge, bis du sie oder die App löschst – und, falls die iCloud-Synchronisierung aktiv ist, bis
+du sie auf deinen synchronisierten Geräten löschst.</p>
 
 <h2>8. Deine Rechte</h2>
 <p>Nach dem Schweizer Datenschutzgesetz – und nach der DSGVO, wenn du dich in der EU oder im EWR

@@ -81,9 +81,8 @@ level — are not sent</strong>; they stay on your device. If you use the in-app
 your recent log is sent to OpenAI so it can answer you, together with whatever your question
 requires it to look up.</p>
 <p>The request passes through a small backend of ours hosted on <strong>Vercel</strong>, which
-forwards it to OpenAI. The backend does not store the photo, voice transcript, text or the estimate.
-To keep running costs bounded it may keep a single aggregate counter of total usage per month — a
-number only, with no content and nothing that identifies you or your device.</p>
+forwards it to OpenAI and nothing more — it does not store the photo, voice transcript, text or the
+estimate.</p>
 <p>OpenAI states that content submitted through its API is not used to train its models, and may
 retain the inputs for a short period (currently up to 30 days) to monitor for misuse before
 deleting them. OpenAI processes the request in the United States, so logging a meal with AI
@@ -108,8 +107,6 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
   <li><strong>OpenAI</strong> — analyses photos, voice transcripts and text to produce nutrition
       estimates (processing in the United States).</li>
   <li><strong>Vercel</strong> — hosts the pass-through backend that forwards those requests.</li>
-  <li><strong>Upstash</strong> — hosts the aggregate monthly usage counter described above, when it
-      is in use; it holds a number, no content and no identity.</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
       Store, your purchases and iCloud.</li>
@@ -117,10 +114,9 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
 <p>That is the complete list. No one else receives your data.</p>
 
 <h2>7. How long anything is kept</h2>
-<p>On our side we keep no photos, voice transcripts, text or estimates; at most an anonymous
-monthly usage total, which carries nothing about you. OpenAI may hold the inputs for up to 30 days
-as described above. On your side, entries stay until you delete them or remove the app — and, if
-iCloud sync is on, until you delete them from your synced devices.</p>
+<p>On our side we keep no photos, voice transcripts, text or estimates. OpenAI may hold the inputs
+for up to 30 days as described above. On your side, entries stay until you delete them or remove the
+app — and, if iCloud sync is on, until you delete them from your synced devices.</p>
 
 <h2>8. Your rights</h2>
 <p>Under the Swiss Federal Act on Data Protection — and under the GDPR if you are in the EU or
