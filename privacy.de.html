@@ -143,9 +143,11 @@ Daten.</p>
       KI-Anfragen an OpenAI weiterleitet und die Tagesgrenze durchsetzt; Anfragen werden in einem
       Cloudflare-Rechenzentrum verarbeitet, das auch ausserhalb der Schweiz und der EU liegen kann.
       Es verarbeitet technische Verbindungsdaten (etwa IP-Adresse und Zeitpunkt) und die
-      Installationskennung, führt keine Anfrageprotokolle und speichert Foto, Transkript, Text oder
-      Schätzung nicht. Die Übermittlung stützt sich auf die EU-Standardvertragsklauseln (mit
-      Schweizer Zusatz) im Auftragsverarbeitungsvertrag von Cloudflare.</li>
+      Installationskennung und speichert Foto, Transkript, Text oder Schätzung nicht. Wir führen
+      keine eigenen Anfrageprotokolle (die Worker-Protokollierung ist abgeschaltet); Cloudflare kann
+      Verbindungsdaten für Netzbetrieb und Sicherheit nach seinem Auftragsverarbeitungsvertrag
+      verarbeiten. Die Übermittlung stützt sich auf die EU-Standardvertragsklauseln (mit Schweizer
+      Zusatz) in diesem Vertrag.</li>
   <li><strong>Vercel</strong> – ein Ausweichhost für dasselbe durchreichende Backend, der nur
       genutzt wird, wenn Cloudflare nicht erreichbar ist.</li>
   <li><strong>Apple</strong> – vertreibt die App und wickelt Käufe ab; und, falls du die

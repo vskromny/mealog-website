@@ -131,10 +131,11 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
   <li><strong>Cloudflare</strong> (Cloudflare, Inc., USA) — runs the pass-through backend that
       forwards AI requests to OpenAI and enforces the daily limit; requests are handled in a
       Cloudflare data centre that may be outside Switzerland and the EU. It processes technical
-      connection data (such as IP address and time) and the installation identifier, keeps no
-      request logs, and does not store the photo, transcript, text or estimate. Transfers rest on
-      the EU Standard Contractual Clauses (with the Swiss addendum) in Cloudflare's data processing
-      agreement.</li>
+      connection data (such as IP address and time) and the installation identifier, and does not
+      store the photo, transcript, text or estimate. We keep no request logs of our own (Worker
+      logging is off); Cloudflare may process connection data for network operation and security
+      under its data processing agreement. Transfers rest on the EU Standard Contractual Clauses
+      (with the Swiss addendum) in that agreement.</li>
   <li><strong>Vercel</strong> — a fallback host for the same pass-through backend, used only if
       Cloudflare is unreachable.</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
