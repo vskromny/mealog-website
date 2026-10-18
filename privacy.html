@@ -28,10 +28,9 @@ what it never does with them.</p>
 <p>Mealog is operated by V. Skromny, an individual developer based in Switzerland, who is the
 controller of any personal data described here.</p>
 <address>
-  V. Skromny · Mealog<br>
-  Im Gässli 19<br>
-  8162 Steinmaur, Switzerland<br>
-  <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>
+  V. Skromny · Mealog, Switzerland<br>
+  <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a><br>
+  Postal address: see the <a href="./#impressum">Impressum</a> on our site.
 </address>
 
 <h2>2. What Mealog processes</h2>
@@ -72,6 +71,12 @@ deleting an entry on a synced device, removes it from iCloud too.</p>
 <h2>4. How AI estimation works</h2>
 <p>AI estimation runs only after you have agreed to it — Mealog asks the first time, and you can
 withdraw that agreement, or log meals by hand without any AI, at any time in Settings.</p>
+<p>Meals, goals and your log can reveal information about your health, so Mealog treats what it
+sends for AI estimation as sensitive data. The legal basis for sending it to OpenAI is
+<strong>your explicit consent</strong> (GDPR Art. 6(1)(a) and 9(2)(a); Swiss FADP Art. 6(7)),
+given on the AI-consent screen before the first AI request. You can withdraw it at any time in
+Settings&nbsp;&gt;&nbsp;AI&nbsp;&amp;&nbsp;data; withdrawing stops AI estimation, and manual logging
+keeps working without it.</p>
 <p>When you log a meal with AI, the photo, voice transcript or text is sent over an encrypted
 connection to <strong>OpenAI</strong>, which analyses it and returns the estimate you see. If you
 have set goals, your <strong>daily calorie target, your protein, carbohydrate and fat targets, your
@@ -81,12 +86,15 @@ level — are not sent</strong>; they stay on your device. If you use the in-app
 your recent log is sent to OpenAI so it can answer you, together with whatever your question
 requires it to look up.</p>
 <p>The request passes through a small backend of ours hosted on <strong>Vercel</strong>, which
-forwards it to OpenAI and nothing more — it does not store the photo, voice transcript, text or the
-estimate.</p>
+forwards it to OpenAI. Vercel, as our hosting provider, processes the technical connection data
+needed to do that — such as your IP address and the time of the request; it does not store the
+photo, voice transcript, text or the estimate.</p>
 <p>OpenAI states that content submitted through its API is not used to train its models, and may
 retain the inputs for a short period (currently up to 30 days) to monitor for misuse before
-deleting them. OpenAI processes the request in the United States, so logging a meal with AI
-involves a transfer of that content abroad.</p>
+deleting them. OpenAI processes the request in the <strong>United States</strong>, which does not
+by default provide data protection equivalent to Switzerland's or the EU's. This transfer rests on
+your explicit consent, given in the app before the first AI request (Swiss FADP Art. 17(1)(a);
+GDPR Art. 49(1)(a)).</p>
 
 <div class="callout">
 <p><strong>Meal logs say something about your health.</strong> What you eat, when you eat and how
@@ -111,7 +119,7 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
       Store, your purchases and iCloud.</li>
 </ul>
-<p>That is the complete list. No one else receives your data.</p>
+<p>We do not share your data with anyone else.</p>
 
 <h2>7. How long anything is kept</h2>
 <p>On our side we keep no photos, voice transcripts, text or estimates. OpenAI may hold the inputs
@@ -121,13 +129,16 @@ app — and, if iCloud sync is on, until you delete them from your synced device
 <h2>8. Your rights</h2>
 <p>Under the Swiss Federal Act on Data Protection — and under the GDPR if you are in the EU or
 EEA — you may request access to your personal data, correction, deletion, restriction, objection
-or portability, and you may complain to a supervisory authority (in Switzerland, the Federal Data
-Protection and Information Commissioner).</p>
+or portability, and you may <strong>withdraw your consent to AI estimation</strong> at any time.
+You may complain to a supervisory authority: in Switzerland the Federal Data Protection and
+Information Commissioner, and in the EU/EEA your local data-protection authority.</p>
 <p>In practice most of these you can exercise yourself in seconds, because the data is on your
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
-it elsewhere, and clear or disable your profile and Apple Health access in Settings. For anything
-else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>
-and you will get an answer within 30 days.</p>
+it elsewhere, withdraw AI consent and clear or disable your profile and Apple Health access in
+Settings. Because we keep no copy of your content and hold nothing that identifies you, we cannot
+look up or retrieve the short-lived copy OpenAI may hold; a request about that goes to OpenAI. For
+anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a> and you will
+get an answer within 30 days.</p>
 
 <h2>9. Security</h2>
 <p>Everything leaving the app travels over encrypted connections (TLS). Your log is protected by
@@ -135,8 +146,8 @@ your device's own security — a passcode or Face ID is the single most effectiv
 to protect it. No system is perfect, and we do not claim otherwise.</p>
 
 <h2>10. Children</h2>
-<p>Mealog is not directed at children under 16 and should not be used by them without a parent or
-guardian's involvement.</p>
+<p>Mealog is not meant for people under 16, and you should not use it if you are under 16. If we
+learn that a child has used it, write to us and we will help delete their data.</p>
 
 <h2>11. Changes to this policy</h2>
 <p>If this policy changes, the updated version appears on this page with a new date. Material
