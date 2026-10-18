@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Mealog</title>
-<meta name="description" content="How Mealog handles meal photos, voice input and your log: stored on your device, analysed by OpenAI, never sold, no analytics.">
+<meta name="description" content="How Mealog handles meal photos, voice input, your profile and your log: stored on your device, analysed by OpenAI, optional Apple Health and iCloud sync, never sold, no analytics.">
 <meta name="theme-color" content="#0B0E11">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="assets/logo/mealog-icon.svg">
@@ -19,10 +19,10 @@
 <main>
 <div class="eyebrow">your data, your phone</div>
 <h1>Privacy Policy</h1>
-<div class="dateline">Effective 18 August 2026 · Last updated 18 August 2026</div>
+<div class="dateline">Effective 18 August 2026 · Last updated 18 October 2026 · <a href="privacy.de.html">Deutsch</a></div>
 <p class="lead">Mealog is built so that your meal log stays with you. This policy explains
-exactly what the app does with your photos, your voice and your entries — and what it
-never does with them.</p>
+exactly what the app does with your photos, your voice, your profile and your entries — and
+what it never does with them.</p>
 
 <h2>1. Who is responsible</h2>
 <p>Mealog is operated by V. Skromny, an individual developer based in Switzerland, who is the
@@ -35,32 +35,59 @@ controller of any personal data described here.</p>
 </address>
 
 <h2>2. What Mealog processes</h2>
-<p>Only what is needed to turn a meal into an entry:</p>
+<p>Only what is needed to turn a meal into an entry, plus whatever you choose to add:</p>
 <ul>
   <li><strong>Photos</strong> you take of your food.</li>
-  <li><strong>Voice input</strong> when you describe a meal out loud, and the text it becomes.</li>
+  <li><strong>Voice input</strong> when you describe a meal out loud. The recording is used only
+      to produce a transcript and is <strong>deleted as soon as it has been transcribed</strong>;
+      only the text is kept.</li>
   <li><strong>Text you type</strong> — dish names, portions, corrections and notes.</li>
   <li><strong>Your meal log</strong> — entries, times, estimated calories and macros, streaks and
       the photos attached to each entry.</li>
+  <li><strong>Your profile</strong>, if you fill it in — your goals (daily calorie and macro
+      targets, optional fibre, sugar and sodium limits, a dietary pattern, and any ingredients you
+      ask Mealog to flag) and, optionally, body details (age, height, weight, sex, activity level).
+      All of this is optional; you can leave it blank, change it, or delete it at any time.</li>
 </ul>
 <p>Mealog has no sign-up, asks for no name, address or date of birth, and does not read your
-contacts, location or health records.</p>
+contacts or location.</p>
+<div class="callout">
+<p><strong>Apple Health is optional and off until you connect it.</strong> If you turn it on in
+Settings, Mealog reads your height and weight to pre-fill your goals and writes the nutrition of
+meals you log back to Health. Health data stays on your device, is never sent to OpenAI, our
+backend, or anyone else, and you can revoke access at any time in Settings or in the Health app.</p>
+</div>
 
 <h2>3. Where your log lives</h2>
 <p>Your meal log is stored <strong>on your iPhone</strong>. It is not uploaded to a Mealog account,
 because there is no Mealog account. Deleting an entry removes it; deleting the app removes the
 whole log. If you back your phone up to iCloud, the log is included in that backup under Apple's
 terms, not ours.</p>
+<p><strong>Optional iCloud sync.</strong> If you turn on iCloud sync in Settings — it is
+<strong>off by default</strong> — your log (entries, photos and profile) is also stored in your own
+private iCloud database so it can appear on your other devices. That database is Apple's, governed
+by Apple's terms; it is tied to your Apple Account and we cannot access it. Turning sync off, or
+deleting an entry on a synced device, removes it from iCloud too.</p>
 
 <h2>4. How AI estimation works</h2>
-<p>When you log a meal, the photo, voice clip or text is sent over an encrypted connection to
-<strong>OpenAI</strong>, which analyses it and returns the estimate you see. The request passes
-through a small backend of ours hosted on <strong>Vercel</strong>, which forwards it and nothing
-more — it does not store, log or inspect the content.</p>
-<p>Neither the media nor the estimate is retained on our servers after the response is returned.
-OpenAI states that content submitted through its API is not used to train its models. OpenAI
-processes the request in the United States, so logging a meal involves a transfer of that content
-abroad.</p>
+<p>AI estimation runs only after you have agreed to it — Mealog asks the first time, and you can
+withdraw that agreement, or log meals by hand without any AI, at any time in Settings.</p>
+<p>When you log a meal with AI, the photo, voice transcript or text is sent over an encrypted
+connection to <strong>OpenAI</strong>, which analyses it and returns the estimate you see. If you
+have set goals, your <strong>daily calorie target, your protein, carbohydrate and fat targets, your
+dietary pattern and any ingredients you asked to flag</strong> are included with the request,
+because they help the estimate. Your <strong>body details — age, height, weight, sex and activity
+level — are not sent</strong>; they stay on your device. If you use the in-app Coach, a summary of
+your recent log is sent to OpenAI so it can answer you, together with whatever your question
+requires it to look up.</p>
+<p>The request passes through a small backend of ours hosted on <strong>Vercel</strong>, which
+forwards it to OpenAI. The backend does not store the photo, voice transcript, text or the estimate.
+To keep running costs bounded it may keep a single aggregate counter of total usage per month — a
+number only, with no content and nothing that identifies you or your device.</p>
+<p>OpenAI states that content submitted through its API is not used to train its models, and may
+retain the inputs for a short period (currently up to 30 days) to monitor for misuse before
+deleting them. OpenAI processes the request in the United States, so logging a meal with AI
+involves a transfer of that content abroad.</p>
 
 <div class="callout">
 <p><strong>Meal logs say something about your health.</strong> What you eat, when you eat and how
@@ -78,16 +105,22 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
 
 <h2>6. Who else is involved</h2>
 <ul>
-  <li><strong>OpenAI</strong> — analyses photos, voice and text to produce nutrition estimates.</li>
+  <li><strong>OpenAI</strong> — analyses photos, voice transcripts and text to produce nutrition
+      estimates (processing in the United States).</li>
   <li><strong>Vercel</strong> — hosts the pass-through backend that forwards those requests.</li>
-  <li><strong>Apple</strong> — distributes the app and handles any purchase. Apple's own privacy
-      policy governs the App Store and anything you buy there.</li>
+  <li><strong>Upstash</strong> — hosts the aggregate monthly usage counter described above, when it
+      is in use; it holds a number, no content and no identity.</li>
+  <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
+      iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
+      Store, your purchases and iCloud.</li>
 </ul>
 <p>That is the complete list. No one else receives your data.</p>
 
 <h2>7. How long anything is kept</h2>
-<p>On our side, nothing is kept: media is discarded once the estimate is returned. On your side,
-entries stay until you delete them or remove the app.</p>
+<p>On our side we keep no photos, voice transcripts, text or estimates; at most an anonymous
+monthly usage total, which carries nothing about you. OpenAI may hold the inputs for up to 30 days
+as described above. On your side, entries stay until you delete them or remove the app — and, if
+iCloud sync is on, until you delete them from your synced devices.</p>
 
 <h2>8. Your rights</h2>
 <p>Under the Swiss Federal Act on Data Protection — and under the GDPR if you are in the EU or
@@ -96,7 +129,8 @@ or portability, and you may complain to a supervisory authority (in Switzerland,
 Protection and Information Commissioner).</p>
 <p>In practice most of these you can exercise yourself in seconds, because the data is on your
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
-it elsewhere. For anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>
+it elsewhere, and clear or disable your profile and Apple Health access in Settings. For anything
+else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>
 and you will get an answer within 30 days.</p>
 
 <h2>9. Security</h2>
