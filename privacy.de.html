@@ -38,9 +38,9 @@ alle hier beschriebenen personenbezogenen Daten verantwortlich ist.</p>
 freiwillig ergänzt:</p>
 <ul>
   <li><strong>Fotos</strong>, die du von deinem Essen machst.</li>
-  <li><strong>Spracheingabe</strong>, wenn du eine Mahlzeit laut beschreibst. Die Aufnahme dient
-      ausschliesslich dazu, ein Transkript zu erstellen, und wird
-      <strong>gelöscht, sobald sie transkribiert ist</strong>; nur der Text bleibt erhalten.</li>
+  <li><strong>Spracheingabe</strong>, wenn du eine Mahlzeit laut beschreibst. Die Aufnahme wird nur
+      zur Transkription an OpenAI gesendet und <strong>von deinem Gerät gelöscht, sobald sie
+      transkribiert ist</strong>; nur der Text bleibt erhalten.</li>
   <li><strong>Text, den du eingibst</strong> – Gerichtnamen, Portionen, Korrekturen und Notizen.</li>
   <li><strong>Dein Essensprotokoll</strong> – Einträge, Zeiten, geschätzte Kalorien und
       Makronährstoffe, Serien und die zu jedem Eintrag gehörenden Fotos.</li>
@@ -84,9 +84,9 @@ Rechtsgrundlage für das Senden an OpenAI ist <strong>deine ausdrückliche Einwi
 KI-Einwilligungsbildschirm vor der ersten KI-Anfrage gibst. Du kannst sie jederzeit unter
 Einstellungen&nbsp;&gt;&nbsp;KI&nbsp;&amp;&nbsp;Daten widerrufen; der Widerruf beendet die
 KI-Schätzung, und das Erfassen von Hand funktioniert weiterhin ohne sie.</p>
-<p>Wenn du eine Mahlzeit mit KI erfasst, werden das Foto, das Sprachtranskript oder der Text über
-eine verschlüsselte Verbindung an <strong>OpenAI</strong> gesendet, das sie auswertet und die
-Schätzung zurückgibt, die du siehst. Falls du Ziele gesetzt hast, werden <strong>dein tägliches
+<p>Wenn du eine Mahlzeit mit KI erfasst, werden das Foto, die Sprachaufnahme (zur Transkription),
+das Transkript oder der Text über eine verschlüsselte Verbindung an <strong>OpenAI</strong>
+gesendet, das sie auswertet und die Schätzung zurückgibt, die du siehst. Falls du Ziele gesetzt hast, werden <strong>dein tägliches
 Kalorienziel, deine Ziele für Protein, Kohlenhydrate und Fett, dein Ernährungsmuster und die von dir
 gekennzeichneten Zutaten</strong> mit der Anfrage mitgesendet, weil sie die Schätzung verbessern.
 Deine <strong>Körperangaben – Alter, Grösse, Gewicht, Geschlecht und Aktivitätslevel – werden nicht
@@ -97,21 +97,17 @@ mit dem, was deine Frage ihn nachschlagen lässt.</p>
 <strong>Vercel</strong> als Ausweichhost, der nur genutzt wird, wenn Cloudflare nicht erreichbar ist
 – und wird an OpenAI weitergeleitet. Als unser Hosting-Anbieter verarbeitet es die dafür nötigen
 technischen Verbindungsdaten – etwa deine IP-Adresse und den Zeitpunkt der Anfrage; Inhalte wie das
-Foto, das Sprachtranskript, den Text oder die Schätzung speichert es nicht.</p>
-<p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro
-App-Installation und Tag. Mit jeder KI-Anfrage sendet die App eine von iOS erzeugte, zufällige
-Installationskennung (Apples „Identifier for Vendor"); sie ist nicht dein Name, Konto oder deine
-E-Mail-Adresse, keine Werbe-Kennung und wird zurückgesetzt, wenn du die App entfernst. Das Backend
-(Cloudflare) nutzt sie ausschliesslich als Schlüssel eines Zählers – der Zahl der KI-Anfragen an
-diesem Tag (UTC) – und löscht diesen Zähler spätestens 2 Tage nach deiner letzten KI-Anfrage. Die
-Kennung reist in derselben Anfrage wie deine Mahlzeit, wird aber nicht zusammen mit deinen Fotos,
-deiner Stimme, deinem Text, deinem Profil oder den Schätzungen gespeichert. Sendet eine App-Version
-keine Kennung, wird der Zähler stattdessen an deine IP-Adresse geknüpft, mit derselben Löschfrist.
-Eine monatliche Gesamtnutzung wird getrennt und ohne Kennung geführt. Rechtsgrundlage: unser
-berechtigtes Interesse, den Dienst verfügbar und die Kosten unter Kontrolle zu halten (DSGVO Art. 6
-Abs. 1 lit. f; DSG Art. 31 Abs. 1). Du kannst per E-Mail widersprechen oder die KI-Schätzung einfach
-ausschalten. Die Kennung wird nie verwendet, um dich über Apps oder Websites hinweg zu
-verfolgen.</p>
+Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert es nicht.</p>
+<p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro Tag. Es
+zählt sie anhand deiner IP-Adresse: Das Backend (Cloudflare) nutzt die IP-Adresse ausschliesslich
+als Schlüssel eines Zählers (der Zahl der KI-Anfragen an diesem Tag, UTC) und löscht diesen Zähler
+spätestens 2 Tage nach deiner letzten KI-Anfrage. Die App sendet keine Geräte- oder
+Installationskennung, und die IP-Adresse wird nicht zusammen mit deinen Fotos, deiner Stimme,
+deinem Text, deinem Profil oder den Schätzungen gespeichert. Eine monatliche Gesamtnutzung wird
+getrennt und ohne IP-Adresse geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
+verfügbar und die Kosten unter Kontrolle zu halten (DSGVO Art. 6 Abs. 1 lit. f; DSG Art. 31
+Abs. 1). Du kannst per E-Mail widersprechen oder die KI-Schätzung einfach ausschalten. Die
+IP-Adresse wird nie verwendet, um dich über Apps oder Websites hinweg zu verfolgen.</p>
 <p>OpenAI gibt an, dass über seine API übermittelte Inhalte nicht zum Training seiner Modelle
 verwendet werden, und kann die Eingaben für kurze Zeit (derzeit bis zu 30 Tage) zur Missbrauchs­kontrolle
 aufbewahren, bevor sie gelöscht werden. OpenAI verarbeitet die Anfrage in den <strong>Vereinigten
@@ -137,13 +133,13 @@ Daten.</p>
 <h2>6. Wer sonst beteiligt ist</h2>
 <ul>
   <li><strong>OpenAI</strong> (OpenAI Ireland Ltd., Dublin; Verarbeitung auch durch OpenAI OpCo,
-      LLC, in den Vereinigten Staaten) – wertet Fotos, Sprachtranskripte und Text aus, um
-      Nährwertschätzungen zu erstellen.</li>
+      LLC, in den Vereinigten Staaten) – transkribiert Sprachaufnahmen und wertet Fotos,
+      Transkripte und Text aus, um Nährwertschätzungen zu erstellen.</li>
   <li><strong>Cloudflare</strong> (Cloudflare, Inc., USA) – betreibt das durchreichende Backend, das
       KI-Anfragen an OpenAI weiterleitet und die Tagesgrenze durchsetzt; Anfragen werden in einem
       Cloudflare-Rechenzentrum verarbeitet, das auch ausserhalb der Schweiz und der EU liegen kann.
-      Es verarbeitet technische Verbindungsdaten (etwa IP-Adresse und Zeitpunkt) und die
-      Installationskennung und speichert Foto, Transkript, Text oder Schätzung nicht. Wir führen
+      Es verarbeitet technische Verbindungsdaten (etwa IP-Adresse und Zeitpunkt) und speichert
+      Foto, Sprachaufnahme, Transkript, Text oder Schätzung nicht. Wir führen
       keine eigenen Anfrageprotokolle (die Worker-Protokollierung ist abgeschaltet); Cloudflare kann
       Verbindungsdaten für Netzbetrieb und Sicherheit nach seinem Auftragsverarbeitungsvertrag
       verarbeiten. Die Übermittlung stützt sich auf die EU-Standardvertragsklauseln (mit Schweizer
@@ -157,7 +153,7 @@ Daten.</p>
 <p>Wir geben deine Daten an niemanden sonst weiter.</p>
 
 <h2>7. Wie lange etwas aufbewahrt wird</h2>
-<p>Auf unserer Seite bewahren wir keine Fotos, Sprachtranskripte, Texte oder Schätzungen auf.
+<p>Auf unserer Seite bewahren wir keine Fotos, Sprachaufnahmen, Transkripte, Texte oder Schätzungen auf.
 OpenAI kann die Eingaben wie oben beschrieben bis zu 30 Tage aufbewahren. Auf deiner Seite bleiben
 Einträge, bis du sie oder die App löschst – und, falls die iCloud-Synchronisierung aktiv ist, bis
 du sie auf deinen synchronisierten Geräten löschst. Der Zähler für die Tagesgrenze auf unserem
@@ -174,10 +170,9 @@ der EU/im EWR bei deiner örtlichen Datenschutzbehörde.</p>
 liegen: einen Eintrag zum Korrigieren bearbeiten, einen Eintrag oder die App zum Löschen entfernen,
 dein Protokoll exportieren, die KI-Einwilligung widerrufen sowie dein Profil und den
 Apple-Health-Zugriff in den Einstellungen löschen oder deaktivieren. Da wir keine Kopie deiner
-Inhalte aufbewahren und weder Namen, Konto noch Inhalte von dir besitzen – nur die in Abschnitt 4
-beschriebene zufällige Installationskennung, die wir keiner Person zuordnen können, solange du sie
-uns nicht nennst –, können wir die kurzzeitige Kopie, die OpenAI möglicherweise hält, nicht abrufen;
-eine Anfrage dazu richtest du an OpenAI. Für alles
+Inhalte aufbewahren und weder Namen, Konto noch Inhalte von dir besitzen – nur den in Abschnitt 4
+beschriebenen kurzlebigen IP-Adress-Zähler –, können wir die kurzzeitige Kopie, die OpenAI
+möglicherweise hält, nicht abrufen; eine Anfrage dazu richtest du an OpenAI. Für alles
 Übrige schreib an <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>, und du erhältst
 innerhalb von 30 Tagen eine Antwort.</p>
 

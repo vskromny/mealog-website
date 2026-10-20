@@ -37,9 +37,9 @@ controller of any personal data described here.</p>
 <p>Only what is needed to turn a meal into an entry, plus whatever you choose to add:</p>
 <ul>
   <li><strong>Photos</strong> you take of your food.</li>
-  <li><strong>Voice input</strong> when you describe a meal out loud. The recording is used only
-      to produce a transcript and is <strong>deleted as soon as it has been transcribed</strong>;
-      only the text is kept.</li>
+  <li><strong>Voice input</strong> when you describe a meal out loud. The recording is sent to
+      OpenAI only to produce a transcript, and is <strong>deleted from your device as soon as it
+      has been transcribed</strong>; only the text is kept.</li>
   <li><strong>Text you type</strong> — dish names, portions, corrections and notes.</li>
   <li><strong>Your meal log</strong> — entries, times, estimated calories and macros, streaks and
       the photos attached to each entry.</li>
@@ -77,8 +77,9 @@ sends for AI estimation as sensitive data. The legal basis for sending it to Ope
 given on the AI-consent screen before the first AI request. You can withdraw it at any time in
 Settings&nbsp;&gt;&nbsp;AI&nbsp;&amp;&nbsp;data; withdrawing stops AI estimation, and manual logging
 keeps working without it.</p>
-<p>When you log a meal with AI, the photo, voice transcript or text is sent over an encrypted
-connection to <strong>OpenAI</strong>, which analyses it and returns the estimate you see. If you
+<p>When you log a meal with AI, the photo, the voice recording (for transcription), the transcript or
+the text is sent over an encrypted connection to <strong>OpenAI</strong>, which analyses it and
+returns the estimate you see. If you
 have set goals, your <strong>daily calorie target, your protein, carbohydrate and fat targets, your
 dietary pattern and any ingredients you asked to flag</strong> are included with the request,
 because they help the estimate. Your <strong>body details — age, height, weight, sex and activity
@@ -88,20 +89,16 @@ requires it to look up.</p>
 <p>The request passes through a small backend of ours — hosted on <strong>Cloudflare</strong>, with
 <strong>Vercel</strong> kept as a fallback used only if Cloudflare is unreachable — which forwards
 it to OpenAI. As our hosting provider, it processes the technical connection data needed to do that,
-such as your IP address and the time of the request; it does not store the photo, voice transcript,
-text or the estimate.</p>
-<p>To keep the service available to everyone, our backend limits AI requests per app installation
-each day. With each AI request, the app sends a random per-installation identifier created by iOS
-(Apple's "identifier for vendor"); it is not your name, account or email, not an advertising
-identifier, and it resets when you remove the app. The backend (Cloudflare) uses it only as the key
-of a counter — the number of AI requests that day (UTC) — and deletes that counter within 2 days
-after your last AI request. The identifier travels in the same request as your meal, but it is not
-stored with your photos, voice, text, profile or estimates. If an app version sends no identifier,
-the counter is keyed to your IP address instead, with the same deletion period. A separate monthly
-usage total is kept without any identifier. Legal basis: our legitimate interest in keeping the
-service available and its costs under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can
-object by email or simply turn off AI estimation. The identifier is never used to track you across
-apps or websites.</p>
+such as your IP address and the time of the request; it does not store the photo, the voice
+recording, the transcript, the text or the estimate.</p>
+<p>To keep the service available to everyone, our backend limits AI requests per day. It counts them
+against your IP address: the backend (Cloudflare) uses the IP address only as the key of a counter
+(the number of AI requests that day, UTC) and deletes that counter within 2 days after your last AI
+request. The app sends no device or installation identifier, and the IP address is not stored with
+your photos, voice, text, profile or estimates. A separate monthly usage total is kept without any
+IP address. Legal basis: our legitimate interest in keeping the service available and its costs
+under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can object by email or simply turn off
+AI estimation. The IP address is never used to track you across apps or websites.</p>
 <p>OpenAI states that content submitted through its API is not used to train its models, and may
 retain the inputs for a short period (currently up to 30 days) to monitor for misuse before
 deleting them. OpenAI processes the request in the <strong>United States</strong>, which does not
@@ -126,13 +123,13 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
 <h2>6. Who else is involved</h2>
 <ul>
   <li><strong>OpenAI</strong> (OpenAI Ireland Ltd., Dublin; processing also by OpenAI OpCo, LLC,
-      in the United States) — analyses photos, voice transcripts and text to produce nutrition
-      estimates.</li>
+      in the United States) — transcribes voice recordings, and analyses photos, transcripts and
+      text, to produce nutrition estimates.</li>
   <li><strong>Cloudflare</strong> (Cloudflare, Inc., USA) — runs the pass-through backend that
       forwards AI requests to OpenAI and enforces the daily limit; requests are handled in a
       Cloudflare data centre that may be outside Switzerland and the EU. It processes technical
-      connection data (such as IP address and time) and the installation identifier, and does not
-      store the photo, transcript, text or estimate. We keep no request logs of our own (Worker
+      connection data (such as IP address and time), and does not store the photo, the voice
+      recording, the transcript, the text or estimate. We keep no request logs of our own (Worker
       logging is off); Cloudflare may process connection data for network operation and security
       under its data processing agreement. Transfers rest on the EU Standard Contractual Clauses
       (with the Swiss addendum) in that agreement.</li>
@@ -145,7 +142,7 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
 <p>We do not share your data with anyone else.</p>
 
 <h2>7. How long anything is kept</h2>
-<p>On our side we keep no photos, voice transcripts, text or estimates. OpenAI may hold the inputs
+<p>On our side we keep no photos, voice recordings, transcripts, text or estimates. OpenAI may hold the inputs
 for up to 30 days as described above. On your side, entries stay until you delete them or remove the
 app — and, if iCloud sync is on, until you delete them from your synced devices. The daily-limit
 counter on our backend is deleted within 2 days after your last AI request.</p>
@@ -160,9 +157,8 @@ Information Commissioner, and in the EU/EEA your local data-protection authority
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
 it elsewhere, withdraw AI consent and clear or disable your profile and Apple Health access in
 Settings. Because we keep no copy of your content — and hold no name, account or content of yours,
-only the random installation identifier described in section 4, which we cannot link to a person
-unless you give it to us — we cannot look up or retrieve the short-lived copy OpenAI may hold; a
-request about that goes to OpenAI. For
+only the short-lived IP-address counter described in section 4 — we cannot look up or retrieve the
+short-lived copy OpenAI may hold; a request about that goes to OpenAI. For
 anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a> and you will
 get an answer within 30 days.</p>
 
