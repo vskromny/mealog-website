@@ -94,7 +94,8 @@ recording, the transcript, the text or the estimate.</p>
 <p>To keep the service available to everyone, our backend limits AI requests per app installation
 each day. With each AI request, the app sends a random per-installation identifier created by iOS
 (Apple's "identifier for vendor"); it is not your name, account or email, not an advertising
-identifier, and it resets when you remove the app. The backend (Cloudflare) uses it only as the key
+identifier, and it may change if you remove the app (iOS keeps it while another app from the same
+developer stays installed). The backend (Cloudflare) uses it only as the key
 of a counter — the number of AI requests that day (UTC) — and deletes that counter within 2 days
 after your last AI request. The identifier travels in the same request as your meal, but it is not
 stored with your photos, voice, text, profile or estimates. If an app version sends no identifier,
@@ -135,9 +136,11 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
       recording, the transcript, the text or estimate. We keep no request logs of our own (Worker
       logging is off); Cloudflare may process connection data for network operation and security
       under its data processing agreement. Transfers rest on the EU Standard Contractual Clauses
-      (with the Swiss addendum) in that agreement.</li>
+      (with the Swiss addendum) in that agreement. Cloudflare states that it is certified under the
+      EU-Swiss-US Data Privacy Framework; we rely on the SCCs.</li>
   <li><strong>Vercel</strong> — a fallback host for the same pass-through backend, used only if
-      Cloudflare is unreachable.</li>
+      Cloudflare is unreachable. Vercel, Inc. is a US company; transfers rest on the EU Standard
+      Contractual Clauses (with the Swiss addendum) in its data processing agreement.</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
       Store, your purchases and iCloud.</li>
@@ -160,7 +163,7 @@ Information Commissioner, and in the EU/EEA your local data-protection authority
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
 it elsewhere, withdraw AI consent and clear or disable your profile and Apple Health access in
 Settings. Because we keep no copy of your content — and hold no name, account or content of yours,
-only the short-lived IP-address counter described in section 4 — we cannot look up or retrieve the
+only the short-lived request counter (keyed to the installation identifier, or to your IP address) described in section 4 — we cannot look up or retrieve the
 short-lived copy OpenAI may hold; a request about that goes to OpenAI. For
 anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a> and you will
 get an answer within 30 days.</p>

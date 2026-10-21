@@ -101,7 +101,8 @@ Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert
 <p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro
 App-Installation und Tag. Mit jeder KI-Anfrage sendet die App eine von iOS erzeugte, zufällige
 Installationskennung (Apples „Identifier for Vendor"); sie ist nicht dein Name, Konto oder deine
-E-Mail-Adresse, keine Werbe-Kennung und wird zurückgesetzt, wenn du die App entfernst. Das Backend
+E-Mail-Adresse, keine Werbe-Kennung und kann sich ändern, wenn du die App entfernst (iOS behält sie,
+solange eine andere App desselben Entwicklers installiert bleibt). Das Backend
 (Cloudflare) nutzt sie ausschliesslich als Schlüssel eines Zählers – der Zahl der KI-Anfragen an
 diesem Tag (UTC) – und löscht diesen Zähler spätestens 2 Tage nach deiner letzten KI-Anfrage. Die
 Kennung reist in derselben Anfrage wie deine Mahlzeit, wird aber nicht zusammen mit deinen Fotos,
@@ -146,9 +147,12 @@ Daten.</p>
       keine eigenen Anfrageprotokolle (die Worker-Protokollierung ist abgeschaltet); Cloudflare kann
       Verbindungsdaten für Netzbetrieb und Sicherheit nach seinem Auftragsverarbeitungsvertrag
       verarbeiten. Die Übermittlung stützt sich auf die EU-Standardvertragsklauseln (mit Schweizer
-      Zusatz) in diesem Vertrag.</li>
+      Zusatz) in diesem Vertrag. Cloudflare gibt an, unter dem Data Privacy Framework
+      (EU/Schweiz-USA) zertifiziert zu sein; wir stützen uns auf die Standardvertragsklauseln.</li>
   <li><strong>Vercel</strong> – ein Ausweichhost für dasselbe durchreichende Backend, der nur
-      genutzt wird, wenn Cloudflare nicht erreichbar ist.</li>
+      genutzt wird, wenn Cloudflare nicht erreichbar ist. Vercel, Inc. ist ein US-Unternehmen; die
+      Übermittlung stützt sich auf die EU-Standardvertragsklauseln (mit Schweizer Zusatz) in seinem
+      Auftragsverarbeitungsvertrag.</li>
   <li><strong>Apple</strong> – vertreibt die App und wickelt Käufe ab; und, falls du die
       iCloud-Synchronisierung aktivierst, speichert deine private iCloud-Datenbank. Für den App Store,
       deine Käufe und iCloud gilt Apples eigene Datenschutzerklärung.</li>
@@ -174,7 +178,7 @@ liegen: einen Eintrag zum Korrigieren bearbeiten, einen Eintrag oder die App zum
 dein Protokoll exportieren, die KI-Einwilligung widerrufen sowie dein Profil und den
 Apple-Health-Zugriff in den Einstellungen löschen oder deaktivieren. Da wir keine Kopie deiner
 Inhalte aufbewahren und weder Namen, Konto noch Inhalte von dir besitzen – nur den in Abschnitt 4
-beschriebenen kurzlebigen IP-Adress-Zähler –, können wir die kurzzeitige Kopie, die OpenAI
+beschriebenen kurzlebigen Anfragezähler (an die Installationskennung oder deine IP-Adresse geknüpft) –, können wir die kurzzeitige Kopie, die OpenAI
 möglicherweise hält, nicht abrufen; eine Anfrage dazu richtest du an OpenAI. Für alles
 Übrige schreib an <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>, und du erhältst
 innerhalb von 30 Tagen eine Antwort.</p>
