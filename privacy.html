@@ -91,11 +91,14 @@ requires it to look up.</p>
 it to OpenAI. As our hosting provider, it processes the technical connection data needed to do that,
 such as your IP address and the time of the request; it does not store the photo, the voice
 recording, the transcript, the text or the estimate.</p>
-<p>To keep the service available to everyone, our backend limits AI requests per day. It counts them
-against your IP address: the backend (Cloudflare) uses the IP address only as the key of a counter
-(the number of AI requests that day, UTC) and deletes that counter within 2 days after your last AI
-request. The app sends no device or installation identifier, and the IP address is not stored with
-your photos, voice, text, profile or estimates. A separate monthly usage total is kept without any
+<p>To keep the service available to everyone, our backend limits AI requests per app installation
+each day. With each AI request, the app sends a random per-installation identifier created by iOS
+(Apple's "identifier for vendor"); it is not your name, account or email, not an advertising
+identifier, and it resets when you remove the app. The backend (Cloudflare) uses it only as the key
+of a counter — the number of AI requests that day (UTC) — and deletes that counter within 2 days
+after your last AI request. The identifier travels in the same request as your meal, but it is not
+stored with your photos, voice, text, profile or estimates. If an app version sends no identifier,
+the counter is keyed to your IP address instead, with the same deletion period. A separate monthly usage total is kept without any
 IP address. Legal basis: our legitimate interest in keeping the service available and its costs
 under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can object by email or simply turn off
 AI estimation. The IP address is never used to track you across apps or websites.</p>

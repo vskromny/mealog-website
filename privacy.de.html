@@ -98,13 +98,16 @@ mit dem, was deine Frage ihn nachschlagen lässt.</p>
 – und wird an OpenAI weitergeleitet. Als unser Hosting-Anbieter verarbeitet es die dafür nötigen
 technischen Verbindungsdaten – etwa deine IP-Adresse und den Zeitpunkt der Anfrage; Inhalte wie das
 Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert es nicht.</p>
-<p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro Tag. Es
-zählt sie anhand deiner IP-Adresse: Das Backend (Cloudflare) nutzt die IP-Adresse ausschliesslich
-als Schlüssel eines Zählers (der Zahl der KI-Anfragen an diesem Tag, UTC) und löscht diesen Zähler
-spätestens 2 Tage nach deiner letzten KI-Anfrage. Die App sendet keine Geräte- oder
-Installationskennung, und die IP-Adresse wird nicht zusammen mit deinen Fotos, deiner Stimme,
-deinem Text, deinem Profil oder den Schätzungen gespeichert. Eine monatliche Gesamtnutzung wird
-getrennt und ohne IP-Adresse geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
+<p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro
+App-Installation und Tag. Mit jeder KI-Anfrage sendet die App eine von iOS erzeugte, zufällige
+Installationskennung (Apples „Identifier for Vendor"); sie ist nicht dein Name, Konto oder deine
+E-Mail-Adresse, keine Werbe-Kennung und wird zurückgesetzt, wenn du die App entfernst. Das Backend
+(Cloudflare) nutzt sie ausschliesslich als Schlüssel eines Zählers – der Zahl der KI-Anfragen an
+diesem Tag (UTC) – und löscht diesen Zähler spätestens 2 Tage nach deiner letzten KI-Anfrage. Die
+Kennung reist in derselben Anfrage wie deine Mahlzeit, wird aber nicht zusammen mit deinen Fotos,
+deiner Stimme, deinem Text, deinem Profil oder den Schätzungen gespeichert. Sendet eine App-Version
+keine Kennung, wird der Zähler stattdessen an deine IP-Adresse geknüpft, mit derselben Löschfrist.
+Eine monatliche Gesamtnutzung wird getrennt und ohne Kennung geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
 verfügbar und die Kosten unter Kontrolle zu halten (DSGVO Art. 6 Abs. 1 lit. f; DSG Art. 31
 Abs. 1). Du kannst per E-Mail widersprechen oder die KI-Schätzung einfach ausschalten. Die
 IP-Adresse wird nie verwendet, um dich über Apps oder Websites hinweg zu verfolgen.</p>
