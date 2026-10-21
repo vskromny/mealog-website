@@ -99,19 +99,20 @@ mit dem, was deine Frage ihn nachschlagen lässt.</p>
 technischen Verbindungsdaten – etwa deine IP-Adresse und den Zeitpunkt der Anfrage; Inhalte wie das
 Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert es nicht.</p>
 <p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro
-App-Installation und Tag. Mit jeder KI-Anfrage sendet die App eine von iOS erzeugte, zufällige
-Installationskennung (Apples „Identifier for Vendor"); sie ist nicht dein Name, Konto oder deine
-E-Mail-Adresse, keine Werbe-Kennung und kann sich ändern, wenn du die App entfernst (iOS behält sie,
+App-Installation und Tag. Mit jeder KI-Anfrage sendet die App eine pseudonyme Gerätekennung
+(Apples „Identifier for Vendor", IDFV) – einen von iOS erzeugten Zufallswert, der ausschliesslich
+dieser Missbrauchsbegrenzung dient. Sie wird nicht mit deinem Namen oder deiner E-Mail-Adresse
+verknüpft, ist keine Werbe-Kennung und kann sich ändern, wenn du die App entfernst (iOS behält sie,
 solange eine andere App desselben Entwicklers installiert bleibt). Das Backend
-(Cloudflare) nutzt sie ausschliesslich als Schlüssel eines Zählers – der Zahl der KI-Anfragen an
-diesem Tag (UTC) – und löscht diesen Zähler spätestens 2 Tage nach deiner letzten KI-Anfrage. Die
+(Cloudflare) nutzt sie ausschliesslich als Schlüssel eines täglichen Anfragezählers (UTC) und
+löscht diesen Zähler 48 Stunden nach deiner letzten KI-Anfrage. Die
 Kennung reist in derselben Anfrage wie deine Mahlzeit, wird aber nicht zusammen mit deinen Fotos,
 deiner Stimme, deinem Text, deinem Profil oder den Schätzungen gespeichert. Sendet eine App-Version
 keine Kennung, wird der Zähler stattdessen an deine IP-Adresse geknüpft, mit derselben Löschfrist.
 Eine monatliche Gesamtnutzung wird getrennt und ohne Kennung geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
 verfügbar und die Kosten unter Kontrolle zu halten (DSGVO Art. 6 Abs. 1 lit. f; DSG Art. 31
 Abs. 1). Du kannst per E-Mail widersprechen oder die KI-Schätzung einfach ausschalten. Die
-IP-Adresse wird nie verwendet, um dich über Apps oder Websites hinweg zu verfolgen.</p>
+Kennung wird nie verwendet, um dich über Apps oder Websites hinweg zu verfolgen.</p>
 <p>OpenAI gibt an, dass über seine API übermittelte Inhalte nicht zum Training seiner Modelle
 verwendet werden, und kann die Eingaben für kurze Zeit (derzeit bis zu 30 Tage) zur Missbrauchs­kontrolle
 aufbewahren, bevor sie gelöscht werden. OpenAI verarbeitet die Anfrage in den <strong>Vereinigten

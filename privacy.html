@@ -92,17 +92,17 @@ it to OpenAI. As our hosting provider, it processes the technical connection dat
 such as your IP address and the time of the request; it does not store the photo, the voice
 recording, the transcript, the text or the estimate.</p>
 <p>To keep the service available to everyone, our backend limits AI requests per app installation
-each day. With each AI request, the app sends a random per-installation identifier created by iOS
-(Apple's "identifier for vendor"); it is not your name, account or email, not an advertising
-identifier, and it may change if you remove the app (iOS keeps it while another app from the same
-developer stays installed). The backend (Cloudflare) uses it only as the key
-of a counter — the number of AI requests that day (UTC) — and deletes that counter within 2 days
-after your last AI request. The identifier travels in the same request as your meal, but it is not
+each day. With each AI request, the app sends a pseudonymous device identifier (Apple's
+"identifier for vendor", IDFV) — a random value created by iOS, used only to apply those abuse
+limits. It is not combined with your name or email, it is not an advertising identifier, and it may
+change if you remove the app (iOS keeps it while another app from the same developer stays
+installed). The backend (Cloudflare) uses it only as the key of a daily request counter (UTC) and
+deletes that counter 48 hours after your last AI request. The identifier travels in the same request as your meal, but it is not
 stored with your photos, voice, text, profile or estimates. If an app version sends no identifier,
 the counter is keyed to your IP address instead, with the same deletion period. A separate monthly usage total is kept without any
-IP address. Legal basis: our legitimate interest in keeping the service available and its costs
+identifier. Legal basis: our legitimate interest in keeping the service available and its costs
 under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can object by email or simply turn off
-AI estimation. The IP address is never used to track you across apps or websites.</p>
+AI estimation. The identifier is never used to track you across apps or websites.</p>
 <p>OpenAI states that content submitted through its API is not used to train its models, and may
 retain the inputs for a short period (currently up to 30 days) to monitor for misuse before
 deleting them. OpenAI processes the request in the <strong>United States</strong>, which does not
