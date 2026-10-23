@@ -55,9 +55,11 @@ auf deine Kontakte oder deinen Standort zu.</p>
 <div class="callout">
 <p><strong>Apple Health ist optional und bleibt aus, bis du es verbindest.</strong> Wenn du es in den
 Einstellungen aktivierst, liest Mealog deine Grösse und dein Gewicht, um deine Ziele vorauszufüllen,
-und schreibt die Nährwerte protokollierter Mahlzeiten zurück nach Health. Health-Daten bleiben auf
-deinem Gerät, werden nie an OpenAI, unser Backend oder sonst jemanden gesendet, und du kannst den
-Zugriff jederzeit in den Einstellungen oder in der Health-App widerrufen.</p>
+und schreibt die Nährwerte protokollierter Mahlzeiten zurück nach Health. Die Nährwerte, die Mealog
+nach Health schreibt, bleiben auf deinem Gerät und werden nie an OpenAI, unser Backend oder sonst
+jemanden gesendet. Eine eingelesene Grösse oder ein eingelesenes Gewicht wird zu einem normalen
+Profilwert und wird wie der Rest deines Profils behandelt (siehe den KI-Abschnitt unten). Den
+Zugriff kannst du jederzeit in den Einstellungen oder in der Health-App widerrufen.</p>
 </div>
 
 <h2>3. Wo dein Protokoll liegt</h2>
@@ -89,10 +91,13 @@ das Transkript oder der Text über eine verschlüsselte Verbindung an <strong>Op
 gesendet, das sie auswertet und die Schätzung zurückgibt, die du siehst. Falls du Ziele gesetzt hast, werden <strong>dein tägliches
 Kalorienziel, deine Ziele für Protein, Kohlenhydrate und Fett, dein Ernährungsmuster und die von dir
 gekennzeichneten Zutaten</strong> mit der Anfrage mitgesendet, weil sie die Schätzung verbessern.
-Deine <strong>Körperangaben – Alter, Grösse, Gewicht, Geschlecht und Aktivitätslevel – werden nicht
-gesendet</strong>; sie bleiben auf deinem Gerät. Wenn du den integrierten Coach nutzt, wird eine
-Zusammenfassung deines jüngsten Protokolls an OpenAI gesendet, damit er dir antworten kann, zusammen
-mit dem, was deine Frage ihn nachschlagen lässt.</p>
+Deine <strong>Körperangaben – Alter, Grösse, Gewicht, Geschlecht und Aktivitätslevel – werden bei
+der Schätzung einer Mahlzeit nicht gesendet</strong>; sie bleiben auf deinem Gerät. Die einzige
+Ausnahme ist der integrierte <strong>Coach</strong>: Wenn du mit ihm chattest, sendet er eine
+Zusammenfassung deines jüngsten Protokolls und darf – um Fragen zu deinen Zielen zu beantworten –
+diese Profil-Körperangaben lesen und senden, einschliesslich einer aus Apple Health übernommenen
+Grösse oder eines Gewichts. Der Einwilligungsbildschirm in der App weist darauf hin, bevor du den
+Coach nutzt.</p>
 <p>Die Anfrage läuft über ein kleines Backend von uns – gehostet bei <strong>Cloudflare</strong>, mit
 <strong>Vercel</strong> als Ausweichhost, der nur genutzt wird, wenn Cloudflare nicht erreichbar ist
 – und wird an OpenAI weitergeleitet. Als unser Hosting-Anbieter verarbeitet es die dafür nötigen

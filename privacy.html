@@ -53,8 +53,10 @@ contacts or location.</p>
 <div class="callout">
 <p><strong>Apple Health is optional and off until you connect it.</strong> If you turn it on in
 Settings, Mealog reads your height and weight to pre-fill your goals and writes the nutrition of
-meals you log back to Health. Health data stays on your device, is never sent to OpenAI, our
-backend, or anyone else, and you can revoke access at any time in Settings or in the Health app.</p>
+meals you log back to Health. The nutrition Mealog writes into Health stays on your device and is
+never sent to OpenAI, our backend, or anyone else. A height or weight you read in becomes an
+ordinary profile value, handled like the rest of your profile (see the AI section below). You can
+revoke access at any time in Settings or in the Health app.</p>
 </div>
 
 <h2>3. Where your log lives</h2>
@@ -83,9 +85,11 @@ returns the estimate you see. If you
 have set goals, your <strong>daily calorie target, your protein, carbohydrate and fat targets, your
 dietary pattern and any ingredients you asked to flag</strong> are included with the request,
 because they help the estimate. Your <strong>body details — age, height, weight, sex and activity
-level — are not sent</strong>; they stay on your device. If you use the in-app Coach, a summary of
-your recent log is sent to OpenAI so it can answer you, together with whatever your question
-requires it to look up.</p>
+level — are not sent when a meal is estimated</strong>; they stay on your device. The one exception
+is the in-app <strong>Coach</strong>: when you chat with it, it sends a summary of your recent log
+and — so it can answer questions about your goals — may read and send those profile body details,
+including a height or weight you imported from Apple Health. The in-app consent screen states this
+before you turn the Coach on.</p>
 <p>The request passes through a small backend of ours — hosted on <strong>Cloudflare</strong>, with
 <strong>Vercel</strong> kept as a fallback used only if Cloudflare is unreachable — which forwards
 it to OpenAI. As our hosting provider, it processes the technical connection data needed to do that,
