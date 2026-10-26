@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Datenschutzerklärung — Mealog</title>
-<meta name="description" content="Wie Mealog mit Essensfotos, Spracheingabe, deinem Profil und deinem Protokoll umgeht: auf deinem Gerät gespeichert, von OpenAI ausgewertet, optionale Apple-Health- und iCloud-Synchronisierung, nie verkauft, keine Analyse-Tools.">
+<meta name="description" content="Wie Mealog mit Essensfotos, Spracheingabe, deinem Profil und deinem Protokoll umgeht: auf deinem Gerät gespeichert, von OpenAI ausgewertet, optionale Apple-Health- und iCloud-Synchronisierung, nie verkauft, ein paar Produkt-Ereignisse mit einer zufälligen ID, keine Werbung und kein App-übergreifendes Tracking.">
 <meta name="theme-color" content="#0B0E11">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="assets/logo/mealog-icon.svg">
@@ -19,7 +19,7 @@
 <main>
 <div class="eyebrow">deine Daten, dein Handy</div>
 <h1>Datenschutzerklärung</h1>
-<div class="dateline">Gültig ab 18. August 2026 · Zuletzt aktualisiert 21. Oktober 2026 · <a href="privacy.html">English</a></div>
+<div class="dateline">Gültig ab 18. August 2026 · Zuletzt aktualisiert @@PUBLISH-DATE@@ · <a href="privacy.html">English</a></div>
 <p class="lead">Mealog ist so gebaut, dass dein Essensprotokoll bei dir bleibt. Diese Erklärung
 beschreibt genau, was die App mit deinen Fotos, deiner Stimme, deinem Profil und deinen Einträgen
 macht – und was nie damit geschieht.</p>
@@ -49,6 +49,10 @@ freiwillig ergänzt:</p>
       und Zutaten, die Mealog für dich kennzeichnen soll) und, optional, Körperangaben (Alter,
       Grösse, Gewicht, Geschlecht, Aktivitätslevel). All das ist freiwillig; du kannst es leer
       lassen, ändern oder jederzeit löschen.</li>
+  <li><strong>Produkt-Ereignisse</strong>, also eine kurze Liste von Momenten in der App (erster
+      Start, Abschluss des Onboardings, Anzeige des Abo-Bildschirms, ein Kauf), mit einer
+      zufälligen, von der App erzeugten ID. Sie enthalten nie Inhalte deiner Mahlzeiten oder
+      Gesundheitswerte. Details und wie du sie abschaltest, stehen in Abschnitt 5.</li>
 </ul>
 <p>Mealog hat keine Registrierung, fragt nicht nach Name, Adresse oder Geburtsdatum und greift nicht
 auf deine Kontakte oder deinen Standort zu.</p>
@@ -106,9 +110,10 @@ Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert
 <p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro Tag. Es
 zählt sie anhand deiner IP-Adresse: Das Backend (Cloudflare) nutzt die IP-Adresse ausschliesslich
 als Schlüssel eines Zählers (der Zahl der KI-Anfragen an diesem Tag, UTC) und löscht diesen Zähler
-spätestens 2 Tage nach deiner letzten KI-Anfrage. Die App sendet keine Geräte- oder
-Installationskennung, und die IP-Adresse wird nicht zusammen mit deinen Fotos, deiner Stimme,
-deinem Text, deinem Profil oder den Schätzungen gespeichert. Eine monatliche Gesamtnutzung wird
+spätestens 2 Tage nach deiner letzten KI-Anfrage. Die App sendet mit KI-Anfragen keine Geräte-
+oder Installationskennung, und die IP-Adresse wird nicht zusammen mit deinen Fotos, deiner Stimme,
+deinem Text, deinem Profil oder den Schätzungen gespeichert. (Die separate Analyse-ID aus
+Abschnitt 5 wird nie mit einer KI-Anfrage gesendet.) Eine monatliche Gesamtnutzung wird
 getrennt und ohne IP-Adresse geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
 verfügbar und die Kosten unter Kontrolle zu halten (DSGVO Art. 6 Abs. 1 lit. f; DSG Art. 31
 Abs. 1). Du kannst per E-Mail widersprechen oder die KI-Schätzung einfach ausschalten. Die
@@ -122,20 +127,78 @@ der ersten KI-Anfrage gibst (Schweizer DSG Art. 17 Abs. 1 lit. a; DSGVO Art. 49 
 
 <div class="callout">
 <p><strong>Ein Essensprotokoll sagt etwas über deine Gesundheit aus.</strong> Was du isst, wann du
-isst und wie viel, kann viel verraten – deshalb hält Mealog das Protokoll auf deinem Gerät, zeigt
-keine Werbung und betreibt keine Analyse. Behandle deinen Gerätecode als das Schloss für diese
-Daten.</p>
+isst und wie viel, kann viel verraten – deshalb hält Mealog das Protokoll auf deinem Gerät und zeigt
+keine Werbung. Als Nutzungsinformation sendet Mealog nur ein paar Produkt-Ereignisse mit einer
+zufälligen ID, aufgeführt in Abschnitt 5; sie tragen keinen Namen, kein Konto, keine
+Mahlzeiteninhalte und keine Gesundheitswerte. Es gibt keine Werbung und kein App-übergreifendes
+Tracking. Behandle deinen Gerätecode als das Schloss für diese Daten.</p>
 </div>
 
-<h2>5. Was Mealog nie tut</h2>
+<h2>5. Produkt-Analyse</h2>
+<p>Um zu verstehen, wo Menschen zwischen Installation, Onboarding, Abo-Bildschirm und Abschluss
+eines Abos hängen bleiben, und um diese Schritte zu verbessern, kann die App eine kleine Zahl von
+Produkt-Ereignissen senden. Verantwortlich ist derselbe wie in Abschnitt 1: V. Skromny.</p>
+<p><strong>Was gesendet wird: diese Ereignisse und sonst nichts.</strong></p>
 <ul>
-  <li>Keine Analyse-, Telemetrie- oder Absturz-SDKs.</li>
+  <li><code>first_open</code> – erster Start nach der Installation. Zusätzlich gesendet:
+      nichts.</li>
+  <li><code>onboarding_completed</code> – du schliesst die Einführung ab. Zusätzlich gesendet:
+      nichts.</li>
+  <li><code>paywall_shown</code> – der Abo-Bildschirm erscheint. Zusätzlich gesendet:
+      <code>trigger</code>, wo er geöffnet wurde (Onboarding oder Profil).</li>
+  <li><code>complete_purchase</code> – Apple bestätigt einen Abo-Kauf. Zusätzlich gesendet:
+      <code>product_id</code> (Monats- oder Jahresabo), <code>completed</code>,
+      <code>offer_type</code> (Gratis-Testphase, Einführungsangebot, Aktionsangebot oder keins),
+      <code>intro_offer</code> (ja/nein).</li>
+  <li><code>purchase_pending</code> – ein Kauf wartet auf Freigabe, z.&nbsp;B. „Kaufanfrage“.
+      Zusätzlich gesendet: <code>product_id</code>, <code>completed</code>.</li>
+</ul>
+<p>Jedes Ereignis enthält ausserdem den Zeitpunkt und eine <strong>zufällige Analyse-ID</strong>.
+Mealog erzeugt diese ID auf deinem Gerät. Sie ist nicht Apples Werbe-ID (IDFA) oder eine andere
+Apple-Kennung und ist nicht mit deinem Namen, deiner E-Mail oder deinem Apple-Konto verknüpft. Sie
+wird gelöscht, wenn du die App löschst oder die Analyse ausschaltest. Eine neue ID entsteht nur,
+wenn du die Analyse wieder einschaltest.</p>
+<p>Die Ereignisse enthalten nie Fotos, Sprachaufnahmen, Transkripte, eingegebenen Text,
+Mahlzeiten-Einträge, Kalorien oder andere Nährwerte, deine Ziele, dein Profil oder deine
+Körperangaben und nichts aus Apple Health. Sie enthalten keine Preise, Transaktions-IDs oder
+Zahlungsdaten.</p>
+<p><strong>Deine Wahl.</strong> Wenn du dich in der EU/im EWR oder im Vereinigten Königreich
+befindest, ist die Analyse <strong>aus</strong>, bis du sie erlaubst. Mealog fragt einmal nach dem
+Onboarding, mit gleichwertigen Schaltflächen „Erlauben“ und „Nein danke“, und sendet vor deiner
+Antwort nichts. Anderswo, auch in der Schweiz, ist die Analyse standardmässig an, und du kannst sie
+ausschalten. In beiden Fällen findest du den Schalter unter
+<strong>Einstellungen&nbsp;&gt; KI&nbsp;&amp;&nbsp;Daten&nbsp;&gt; Anonyme Nutzungsdaten teilen</strong>. Ausschalten stoppt sofort alle
+Ereignisse und löscht die Analyse-ID von deinem Gerät.</p>
+<p><strong>Rechtsgrundlage.</strong> In der EU/im EWR und im Vereinigten Königreich: deine
+Einwilligung (DSGVO Art. 6 Abs. 1 lit. a; für das Speichern und Auslesen der ID auf deinem Gerät
+Art. 5 Abs. 3 der ePrivacy-Richtlinie in ihrer nationalen Umsetzung, in Deutschland § 25 Abs. 1
+TDDDG). Du kannst sie jederzeit in den Einstellungen widerrufen. Der Widerruf berührt bereits
+gesendete Ereignisse nicht. In der Schweiz: unser überwiegendes berechtigtes Interesse, die App zu
+verstehen und zu verbessern (DSG Art. 31 Abs. 1). Du kannst jederzeit widersprechen, indem du
+Einstellungen&nbsp;&gt; KI&nbsp;&amp;&nbsp;Daten&nbsp;&gt; Anonyme Nutzungsdaten teilen ausschaltest.</p>
+<p><strong>Wer die Daten erhält.</strong> Die Ereignisse gehen an <strong>PostHog</strong>, ein
+US-Unternehmen, das sie in seiner <strong>EU-Cloud in Frankfurt (Deutschland)</strong> speichert.
+PostHog handelt als unser Auftragsverarbeiter nach seinem Auftragsverarbeitungsvertrag. Weil
+PostHog ein US-Unternehmen ist, können US-Behörden nach US-Recht (CLOUD Act) möglicherweise
+Zugriff verlangen, auch wenn die Daten in der EU liegen. Für einen Zugriff aus den USA stützt sich
+die Übermittlung auf die EU-Standardvertragsklauseln mit Schweizer Zusatz im
+Auftragsverarbeitungsvertrag von PostHog (DSGVO Art. 46; DSG Art. 16).</p>
+<p>PostHog ist so eingestellt, dass deine <strong>IP-Adresse verworfen</strong> und kein Standort
+ermittelt wird. Beim Eingang eines Ereignisses sehen seine Server die IP-Adresse kurz, wie jeder
+Server, sie wird aber nicht mit dem Ereignis gespeichert.</p>
+<p><strong>Wie lange.</strong> Ereignisse werden nach 12 Monaten automatisch gelöscht.</p>
+
+<h2>6. Was Mealog nie tut</h2>
+<ul>
+  <li>Keine Analyse-, Telemetrie- oder Absturz-SDKs von Drittanbietern. Mealog sendet nur die in
+      Abschnitt 5 aufgeführten Produkt-Ereignisse, nie Inhalte deiner Mahlzeiten oder
+      Gesundheitswerte.</li>
   <li>Keine Werbung, keine Werbe-IDs, kein App- und seitenübergreifendes Tracking.</li>
   <li>Kein Verkauf, keine Vermietung, kein Handel mit deinen Daten – an niemanden, niemals.</li>
   <li>Keine Profile über dich und keine automatisierten Entscheidungen mit rechtlicher Wirkung.</li>
 </ul>
 
-<h2>6. Wer sonst beteiligt ist</h2>
+<h2>7. Wer sonst beteiligt ist</h2>
 <ul>
   <li><strong>OpenAI</strong> (OpenAI Ireland Ltd., Dublin; Verarbeitung auch durch OpenAI OpCo,
       LLC, in den Vereinigten Staaten) – transkribiert Sprachaufnahmen und wertet Fotos,
@@ -155,20 +218,29 @@ Daten.</p>
       genutzt wird, wenn Cloudflare nicht erreichbar ist. Vercel, Inc. ist ein US-Unternehmen, das
       unter dem EU-USA- und Swiss-U.S. Data Privacy Framework zertifiziert ist (Registerabruf
       21.10.2026, Active).</li>
+  <li><strong>PostHog</strong>, ein US-Unternehmen, speichert die in Abschnitt 5 beschriebenen
+      Produkt-Ereignisse und die zufällige Analyse-ID als unser Auftragsverarbeiter in seiner
+      EU-Cloud (Frankfurt, Deutschland). IP-Adressen werden verworfen. Die Übermittlung stützt sich
+      auf die EU-Standardvertragsklauseln (mit Schweizer Zusatz) in seinem
+      Auftragsverarbeitungsvertrag.</li>
   <li><strong>Apple</strong> – vertreibt die App und wickelt Käufe ab; und, falls du die
       iCloud-Synchronisierung aktivierst, speichert deine private iCloud-Datenbank. Für den App Store,
       deine Käufe und iCloud gilt Apples eigene Datenschutzerklärung.</li>
 </ul>
-<p>Wir geben deine Daten an niemanden sonst weiter.</p>
+<p>Ausser den hier genannten Anbietern, die Daten nur in unserem Auftrag oder, im Fall von Apple,
+nach eigenen Bedingungen verarbeiten, erhält niemand deine Daten. Wir verkaufen oder vermieten sie
+nie.</p>
 
-<h2>7. Wie lange etwas aufbewahrt wird</h2>
+<h2>8. Wie lange etwas aufbewahrt wird</h2>
 <p>Auf unserer Seite bewahren wir keine Fotos, Sprachaufnahmen, Transkripte, Texte oder Schätzungen auf.
 OpenAI kann die Eingaben wie oben beschrieben bis zu 30 Tage aufbewahren. Auf deiner Seite bleiben
 Einträge, bis du sie oder die App löschst – und, falls die iCloud-Synchronisierung aktiv ist, bis
 du sie auf deinen synchronisierten Geräten löschst. Der Zähler für die Tagesgrenze auf unserem
-Backend wird spätestens 2 Tage nach deiner letzten KI-Anfrage gelöscht.</p>
+Backend wird spätestens 2 Tage nach deiner letzten KI-Anfrage gelöscht. Produkt-Ereignisse
+(Abschnitt 5) werden nach 12 Monaten automatisch gelöscht. Die Analyse-ID auf deinem Gerät wird
+gelöscht, wenn du die Analyse ausschaltest oder die App löschst.</p>
 
-<h2>8. Deine Rechte</h2>
+<h2>9. Deine Rechte</h2>
 <p>Nach dem Schweizer Datenschutzgesetz – und nach der DSGVO, wenn du dich in der EU oder im EWR
 befindest – kannst du Auskunft über deine personenbezogenen Daten, Berichtigung, Löschung,
 Einschränkung, Widerspruch oder Datenübertragbarkeit verlangen und <strong>deine Einwilligung in
@@ -180,26 +252,30 @@ liegen: einen Eintrag zum Korrigieren bearbeiten, einen Eintrag oder die App zum
 dein Protokoll exportieren, die KI-Einwilligung widerrufen sowie dein Profil und den
 Apple-Health-Zugriff in den Einstellungen löschen oder deaktivieren. Da wir keine Kopie deiner
 Inhalte aufbewahren und weder Namen, Konto noch Inhalte von dir besitzen – nur den in Abschnitt 4
-beschriebenen kurzlebigen IP-Adress-Zähler –, können wir die kurzzeitige Kopie, die OpenAI
-möglicherweise hält, nicht abrufen; eine Anfrage dazu richtest du an OpenAI. Für alles
+beschriebenen kurzlebigen IP-Adress-Zähler und die Produkt-Ereignisse aus Abschnitt 5 –, können wir
+die kurzzeitige Kopie, die OpenAI möglicherweise hält, nicht abrufen; eine Anfrage dazu richtest du
+an OpenAI. Die Produkt-Ereignisse tragen nur eine zufällige ID, die wir dir nicht zuordnen können;
+deshalb können wir „deine“ Ereignisse auf Anfrage nicht finden. Um sie zu stoppen und die ID von
+deinem Gerät zu entfernen, schalte die Analyse in den Einstellungen aus. Bereits gesendete
+Ereignisse werden am Ende der Aufbewahrungsfrist aus Abschnitt 8 automatisch gelöscht. Für alles
 Übrige schreib an <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>, und du erhältst
 innerhalb von 30 Tagen eine Antwort.</p>
 
-<h2>9. Sicherheit</h2>
+<h2>10. Sicherheit</h2>
 <p>Alles, was die App verlässt, läuft über verschlüsselte Verbindungen (TLS). Dein Protokoll ist
 durch die Sicherheit deines Geräts geschützt – ein Code oder Face ID ist das Wirksamste, was du zu
 seinem Schutz tun kannst. Kein System ist perfekt, und wir behaupten das Gegenteil nicht.</p>
 
-<h2>10. Kinder</h2>
+<h2>11. Kinder</h2>
 <p>Mealog ist nicht für Personen unter 16 Jahren gedacht, und du solltest es nicht nutzen, wenn du
 unter 16 bist. Erfahren wir, dass ein Kind es genutzt hat, schreib uns, und wir helfen beim Löschen
 der Daten.</p>
 
-<h2>11. Änderungen dieser Erklärung</h2>
+<h2>12. Änderungen dieser Erklärung</h2>
 <p>Ändert sich diese Erklärung, erscheint die aktualisierte Fassung mit neuem Datum auf dieser
 Seite. Wesentliche Änderungen werden zusätzlich in der App angezeigt.</p>
 
-<h2>12. Kontakt</h2>
+<h2>13. Kontakt</h2>
 <p>Fragen zum Datenschutz oder eine Anfrage zu deinen Daten? Schreib an
 <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>.</p>
 </main>

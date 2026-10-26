@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Mealog</title>
-<meta name="description" content="How Mealog handles meal photos, voice input, your profile and your log: stored on your device, analysed by OpenAI, optional Apple Health and iCloud sync, never sold, no analytics.">
+<meta name="description" content="How Mealog handles meal photos, voice input, your profile and your log: stored on your device, analysed by OpenAI, optional Apple Health and iCloud sync, never sold, a few product events with a random ID, no advertising or cross-app tracking.">
 <meta name="theme-color" content="#0B0E11">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="assets/logo/mealog-icon.svg">
@@ -19,7 +19,7 @@
 <main>
 <div class="eyebrow">your data, your phone</div>
 <h1>Privacy Policy</h1>
-<div class="dateline">Effective 18 August 2026 · Last updated 21 October 2026 · <a href="privacy.de.html">Deutsch</a></div>
+<div class="dateline">Effective 18 August 2026 · Last updated @@PUBLISH-DATE@@ · <a href="privacy.de.html">Deutsch</a></div>
 <p class="lead">Mealog is built so that your meal log stays with you. This policy explains
 exactly what the app does with your photos, your voice, your profile and your entries — and
 what it never does with them.</p>
@@ -47,6 +47,10 @@ controller of any personal data described here.</p>
       targets, optional fibre, sugar and sodium limits, a dietary pattern, and any ingredients you
       ask Mealog to flag) and, optionally, body details (age, height, weight, sex, activity level).
       All of this is optional; you can leave it blank, change it, or delete it at any time.</li>
+  <li><strong>Product events</strong>, a short list of moments in the app (first launch, finishing
+      onboarding, seeing the subscription screen, a purchase), with a random app-generated ID. They
+      never contain meal content or health values. Details, and how to turn them off, are in
+      section 5.</li>
 </ul>
 <p>Mealog has no sign-up, asks for no name, address or date of birth, and does not read your
 contacts or location.</p>
@@ -98,8 +102,9 @@ recording, the transcript, the text or the estimate.</p>
 <p>To keep the service available to everyone, our backend limits AI requests per day. It counts them
 against your IP address: the backend (Cloudflare) uses the IP address only as the key of a counter
 (the number of AI requests that day, UTC) and deletes that counter within 2 days after your last AI
-request. The app sends no device or installation identifier, and the IP address is not stored with
-your photos, voice, text, profile or estimates. A separate monthly usage total is kept without any
+request. The app sends no device or installation identifier with AI requests, and the IP address is
+not stored with your photos, voice, text, profile or estimates. (The separate analytics ID in
+section 5 never travels with an AI request.) A separate monthly usage total is kept without any
 IP address. Legal basis: our legitimate interest in keeping the service available and its costs
 under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can object by email or simply turn off
 AI estimation. The IP address is never used to track you across apps or websites.</p>
@@ -112,19 +117,69 @@ GDPR Art. 49(1)(a)).</p>
 
 <div class="callout">
 <p><strong>Meal logs say something about your health.</strong> What you eat, when you eat and how
-much can reveal a great deal, which is why Mealog keeps the log on your device, shows no ads and
-runs no analytics. Treat your device passcode as the lock on that data.</p>
+much can reveal a great deal, which is why Mealog keeps the log on your device and shows no ads. The
+only usage information Mealog sends is a few product events, with a random ID, listed in section 5;
+they carry no name, account, meal content or health values. There is no advertising and no tracking
+across apps. Treat your device passcode as the lock on that data.</p>
 </div>
 
-<h2>5. What Mealog never does</h2>
+<h2>5. Product analytics</h2>
+<p>To understand where people get stuck between installing Mealog, finishing onboarding, seeing the
+subscription screen and subscribing, and to fix those steps, the app can send a small number of
+product events. The controller is the same as in section 1: V. Skromny.</p>
+<p><strong>What is sent: these events, and nothing else.</strong></p>
 <ul>
-  <li>No analytics, telemetry or crash-reporting SDKs.</li>
+  <li><code>first_open</code> — the first launch after installing. Extra details: none.</li>
+  <li><code>onboarding_completed</code> — you finish the intro. Extra details: none.</li>
+  <li><code>paywall_shown</code> — the subscription screen appears. Extra details:
+      <code>trigger</code>, where it was opened from (onboarding or profile).</li>
+  <li><code>complete_purchase</code> — a subscription purchase is confirmed by Apple. Extra details:
+      <code>product_id</code> (monthly or annual plan), <code>completed</code>,
+      <code>offer_type</code> (free trial, intro, promo or none), <code>intro_offer</code>
+      (yes/no).</li>
+  <li><code>purchase_pending</code> — a purchase is waiting for approval, e.g. Ask to Buy. Extra
+      details: <code>product_id</code>, <code>completed</code>.</li>
+</ul>
+<p>Each event also carries the time it happened and a <strong>random analytics ID</strong>. Mealog
+creates that ID on your device. It is not Apple's advertising identifier (IDFA) or any other Apple
+identifier, and it is not linked to your name, email or Apple Account. It is deleted when you delete
+the app or turn analytics off, and a new one is created only if you turn analytics back on.</p>
+<p>Events never contain photos, voice, transcripts, text you type, meal entries, calories or other
+nutrition values, your goals, your profile or body details, or anything from Apple Health. They
+contain no prices, transaction IDs or payment details.</p>
+<p><strong>Your choice.</strong> If you are in the EU/EEA or the UK, analytics is
+<strong>off</strong> until you allow it. Mealog asks once, after onboarding, with “Allow” and
+“No thanks” given equal weight, and sends nothing before you answer. Elsewhere, including
+Switzerland, analytics is on by default and you can turn it off. Either way the switch is in
+<strong>Settings&nbsp;&gt; AI&nbsp;&amp;&nbsp;data&nbsp;&gt; Share anonymous usage</strong>. Turning it off stops all events immediately and
+deletes the analytics ID from your device.</p>
+<p><strong>Legal basis.</strong> In the EU/EEA and the UK: your consent (GDPR Art. 6(1)(a); for
+storing and reading the ID on your device, Art. 5(3) of the ePrivacy Directive as implemented
+locally, in Germany § 25(1) TDDDG). You can withdraw it at any time in Settings. Withdrawal does
+not affect events already sent. In Switzerland: our overriding legitimate interest in understanding
+and improving the app (FADP Art. 31(1)). You can object at any time by turning off
+Settings&nbsp;&gt; AI&nbsp;&amp;&nbsp;data&nbsp;&gt; Share anonymous usage.</p>
+<p><strong>Who receives it.</strong> Events go to <strong>PostHog</strong>, a US company, which
+stores them in its <strong>EU cloud in Frankfurt, Germany</strong>. PostHog acts as our processor
+under its data processing agreement. Because PostHog is a US company, US authorities may be able to
+demand access to the data under US law (the CLOUD Act) even though it is stored in the EU. For any
+access from the United States, the transfer rests on the EU Standard Contractual Clauses with the
+Swiss addendum in PostHog's data processing agreement (GDPR Art. 46; FADP Art. 16).</p>
+<p>We have set PostHog to <strong>discard your IP address</strong> and to do no location lookup.
+Its servers still see the IP address briefly when an event arrives, as any server does, but it is
+not stored with the event.</p>
+<p><strong>How long.</strong> Events are deleted automatically after 12 months.</p>
+
+<h2>6. What Mealog never does</h2>
+<ul>
+  <li>No third-party analytics, telemetry or crash-reporting SDKs. Mealog sends only the product
+      events listed in section 5, never meal content or health values.</li>
   <li>No advertising, ad identifiers or tracking across apps and sites.</li>
   <li>No selling, renting or trading of your data — to anyone, ever.</li>
   <li>No profiles built about you, and no automated decisions with legal effects.</li>
 </ul>
 
-<h2>6. Who else is involved</h2>
+<h2>7. Who else is involved</h2>
 <ul>
   <li><strong>OpenAI</strong> (OpenAI Ireland Ltd., Dublin; processing also by OpenAI OpCo, LLC,
       in the United States) — transcribes voice recordings, and analyses photos, transcripts and
@@ -141,19 +196,26 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
   <li><strong>Vercel</strong> — a fallback host for the same pass-through backend, used only if
       Cloudflare is unreachable. Vercel, Inc. is a US company certified under the EU-U.S. and
       Swiss-U.S. Data Privacy Framework (register read 21.10.2026, Active).</li>
+  <li><strong>PostHog</strong>, a US company, stores the product events and the random analytics ID
+      described in section 5 in its EU cloud (Frankfurt, Germany), as our processor. IP addresses
+      are discarded. Transfers rest on the EU Standard Contractual Clauses (with the Swiss
+      addendum) in its data processing agreement.</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
       Store, your purchases and iCloud.</li>
 </ul>
-<p>We do not share your data with anyone else.</p>
+<p>Apart from the providers listed here, who process data only on our behalf or, for Apple, under
+its own terms, no one receives your data. We never sell or rent it.</p>
 
-<h2>7. How long anything is kept</h2>
+<h2>8. How long anything is kept</h2>
 <p>On our side we keep no photos, voice recordings, transcripts, text or estimates. OpenAI may hold the inputs
 for up to 30 days as described above. On your side, entries stay until you delete them or remove the
 app — and, if iCloud sync is on, until you delete them from your synced devices. The daily-limit
-counter on our backend is deleted within 2 days after your last AI request.</p>
+counter on our backend is deleted within 2 days after your last AI request. Product events
+(section 5) are deleted automatically after 12 months. The analytics ID on your device is deleted
+when you turn analytics off or delete the app.</p>
 
-<h2>8. Your rights</h2>
+<h2>9. Your rights</h2>
 <p>Under the Swiss Federal Act on Data Protection — and under the GDPR if you are in the EU or
 EEA — you may request access to your personal data, correction, deletion, restriction, objection
 or portability, and you may <strong>withdraw your consent to AI estimation</strong> at any time.
@@ -163,25 +225,28 @@ Information Commissioner, and in the EU/EEA your local data-protection authority
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
 it elsewhere, withdraw AI consent and clear or disable your profile and Apple Health access in
 Settings. Because we keep no copy of your content — and hold no name, account or content of yours,
-only the short-lived IP-address counter described in section 4 — we cannot look up or retrieve the
-short-lived copy OpenAI may hold; a request about that goes to OpenAI. For
-anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a> and you will
+only the short-lived IP-address counter described in section 4 and the product events described in
+section 5 — we cannot look up or retrieve the short-lived copy OpenAI may hold; a request about that
+goes to OpenAI. The product events carry only a random ID that we cannot connect to you, so we
+cannot find “your” events on request. To stop them and remove the ID from your device, turn
+analytics off in Settings. Events already sent are deleted automatically when the retention period
+in section 8 ends. For anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a> and you will
 get an answer within 30 days.</p>
 
-<h2>9. Security</h2>
+<h2>10. Security</h2>
 <p>Everything leaving the app travels over encrypted connections (TLS). Your log is protected by
 your device's own security — a passcode or Face ID is the single most effective thing you can do
 to protect it. No system is perfect, and we do not claim otherwise.</p>
 
-<h2>10. Children</h2>
+<h2>11. Children</h2>
 <p>Mealog is not meant for people under 16, and you should not use it if you are under 16. If we
 learn that a child has used it, write to us and we will help delete their data.</p>
 
-<h2>11. Changes to this policy</h2>
+<h2>12. Changes to this policy</h2>
 <p>If this policy changes, the updated version appears on this page with a new date. Material
 changes will also be flagged in the app.</p>
 
-<h2>12. Contact</h2>
+<h2>13. Contact</h2>
 <p>Questions about privacy, or a request about your data? Email
 <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>.</p>
 </main>
