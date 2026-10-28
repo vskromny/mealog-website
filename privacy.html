@@ -86,9 +86,9 @@ because they help the estimate. Your <strong>body details — age, height, weigh
 level — are not sent</strong>; they stay on your device. If you use the in-app Coach, a summary of
 your recent log is sent to OpenAI so it can answer you, together with whatever your question
 requires it to look up.</p>
-<p>The request passes through a small backend of ours — hosted on <strong>Cloudflare</strong>, with
-<strong>Vercel</strong> kept as a fallback used only if Cloudflare is unreachable — which forwards
-it to OpenAI. As our hosting provider, it processes the technical connection data needed to do that,
+<p>The request passes through a small backend of ours — hosted on <strong>Cloudflare</strong> — which forwards
+it to OpenAI. App versions before 1.0.6 reach the same backend hosted on <strong>Vercel</strong>
+instead. As our hosting provider, it processes the technical connection data needed to do that,
 such as your IP address and the time of the request; it does not store the photo, the voice
 recording, the transcript, the text or the estimate.</p>
 <p>To keep the service available to everyone, our backend limits AI requests per app installation
@@ -139,8 +139,8 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
       under its data processing agreement. Transfers rest on the EU Standard Contractual Clauses
       (with the Swiss addendum) in that agreement. Cloudflare states that it is certified under the
       EU-Swiss-US Data Privacy Framework; we rely on the SCCs.</li>
-  <li><strong>Vercel</strong> — a fallback host for the same pass-through backend, used only if
-      Cloudflare is unreachable. Vercel, Inc. is a US company certified under the EU-U.S. and
+  <li><strong>Vercel</strong> — hosts the same pass-through backend for app versions before 1.0.6
+      only; version 1.0.6 and later do not use it. Vercel, Inc. is a US company certified under the EU-U.S. and
       Swiss-U.S. Data Privacy Framework (register read 21.10.2026, Active).</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App

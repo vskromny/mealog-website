@@ -93,9 +93,9 @@ Deine <strong>Körperangaben – Alter, Grösse, Gewicht, Geschlecht und Aktivit
 gesendet</strong>; sie bleiben auf deinem Gerät. Wenn du den integrierten Coach nutzt, wird eine
 Zusammenfassung deines jüngsten Protokolls an OpenAI gesendet, damit er dir antworten kann, zusammen
 mit dem, was deine Frage ihn nachschlagen lässt.</p>
-<p>Die Anfrage läuft über ein kleines Backend von uns – gehostet bei <strong>Cloudflare</strong>, mit
-<strong>Vercel</strong> als Ausweichhost, der nur genutzt wird, wenn Cloudflare nicht erreichbar ist
-– und wird an OpenAI weitergeleitet. Als unser Hosting-Anbieter verarbeitet es die dafür nötigen
+<p>Die Anfrage läuft über ein kleines Backend von uns – gehostet bei <strong>Cloudflare</strong> – und wird
+an OpenAI weitergeleitet. App-Versionen vor 1.0.6 erreichen dasselbe Backend stattdessen bei
+<strong>Vercel</strong>. Als unser Hosting-Anbieter verarbeitet es die dafür nötigen
 technischen Verbindungsdaten – etwa deine IP-Adresse und den Zeitpunkt der Anfrage; Inhalte wie das
 Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert es nicht.</p>
 <p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro
@@ -152,8 +152,8 @@ Daten.</p>
       verarbeiten. Die Übermittlung stützt sich auf die EU-Standardvertragsklauseln (mit Schweizer
       Zusatz) in diesem Vertrag. Cloudflare gibt an, unter dem Data Privacy Framework
       (EU/Schweiz-USA) zertifiziert zu sein; wir stützen uns auf die Standardvertragsklauseln.</li>
-  <li><strong>Vercel</strong> – ein Ausweichhost für dasselbe durchreichende Backend, der nur
-      genutzt wird, wenn Cloudflare nicht erreichbar ist. Vercel, Inc. ist ein US-Unternehmen, das
+  <li><strong>Vercel</strong> – betreibt dasselbe durchreichende Backend nur für App-Versionen vor
+      1.0.6; ab Version 1.0.6 wird es nicht mehr genutzt. Vercel, Inc. ist ein US-Unternehmen, das
       unter dem EU-USA- und Swiss-U.S. Data Privacy Framework zertifiziert ist (Registerabruf
       21.10.2026, Active).</li>
   <li><strong>Apple</strong> – vertreibt die App und wickelt Käufe ab; und, falls du die
