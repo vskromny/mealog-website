@@ -90,19 +90,23 @@ is the in-app <strong>Coach</strong>: when you chat with it, it sends a summary 
 and — so it can answer questions about your goals — may read and send those profile body details,
 including a height or weight you imported from Apple Health. The in-app consent screen states this
 before you turn the Coach on.</p>
-<p>The request passes through a small backend of ours — hosted on <strong>Cloudflare</strong>, with
-<strong>Vercel</strong> kept as a fallback used only if Cloudflare is unreachable — which forwards
-it to OpenAI. As our hosting provider, it processes the technical connection data needed to do that,
+<p>The request passes through a small backend of ours — hosted on <strong>Cloudflare</strong> — which forwards
+it to OpenAI. App versions before 1.0.6 reach the same backend hosted on <strong>Vercel</strong>
+instead. As our hosting provider, it processes the technical connection data needed to do that,
 such as your IP address and the time of the request; it does not store the photo, the voice
 recording, the transcript, the text or the estimate.</p>
-<p>To keep the service available to everyone, our backend limits AI requests per day. It counts them
-against your IP address: the backend (Cloudflare) uses the IP address only as the key of a counter
-(the number of AI requests that day, UTC) and deletes that counter within 2 days after your last AI
-request. The app sends no device or installation identifier, and the IP address is not stored with
-your photos, voice, text, profile or estimates. A separate monthly usage total is kept without any
-IP address. Legal basis: our legitimate interest in keeping the service available and its costs
+<p>To keep the service available to everyone, our backend limits AI requests per app installation
+each day. With each AI request, the app sends a pseudonymous device identifier (Apple's
+"identifier for vendor", IDFV) — a random value created by iOS, used only to apply those abuse
+limits. It is not combined with your name or email, it is not an advertising identifier, and it may
+change if you remove the app (iOS keeps it while another app from the same developer stays
+installed). The backend (Cloudflare) uses it only as the key of a daily request counter (UTC) and
+deletes that counter 48 hours after your last AI request. The identifier travels in the same request as your meal, but it is not
+stored with your photos, voice, text, profile or estimates. If an app version sends no identifier,
+the counter is keyed to your IP address instead, with the same deletion period. A separate monthly usage total is kept without any
+identifier. Legal basis: our legitimate interest in keeping the service available and its costs
 under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can object by email or simply turn off
-AI estimation. The IP address is never used to track you across apps or websites.</p>
+AI estimation. The identifier is never used to track you across apps or websites.</p>
 <p>OpenAI states that content submitted through its API is not used to train its models, and may
 retain the inputs for a short period (currently up to 30 days) to monitor for misuse before
 deleting them. OpenAI processes the request in the <strong>United States</strong>, which does not
@@ -137,9 +141,10 @@ runs no analytics. Treat your device passcode as the lock on that data.</p>
       recording, the transcript, the text or estimate. We keep no request logs of our own (Worker
       logging is off); Cloudflare may process connection data for network operation and security
       under its data processing agreement. Transfers rest on the EU Standard Contractual Clauses
-      (with the Swiss addendum) in that agreement.</li>
-  <li><strong>Vercel</strong> — a fallback host for the same pass-through backend, used only if
-      Cloudflare is unreachable. Vercel, Inc. is a US company certified under the EU-U.S. and
+      (with the Swiss addendum) in that agreement. Cloudflare states that it is certified under the
+      EU-Swiss-US Data Privacy Framework; we rely on the SCCs.</li>
+  <li><strong>Vercel</strong> — hosts the same pass-through backend for app versions before 1.0.6
+      only; version 1.0.6 and later do not use it. Vercel, Inc. is a US company certified under the EU-U.S. and
       Swiss-U.S. Data Privacy Framework (register read 21.10.2026, Active).</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
@@ -163,7 +168,7 @@ Information Commissioner, and in the EU/EEA your local data-protection authority
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
 it elsewhere, withdraw AI consent and clear or disable your profile and Apple Health access in
 Settings. Because we keep no copy of your content — and hold no name, account or content of yours,
-only the short-lived IP-address counter described in section 4 — we cannot look up or retrieve the
+only the short-lived request counter (keyed to the installation identifier, or to your IP address) described in section 4 — we cannot look up or retrieve the
 short-lived copy OpenAI may hold; a request about that goes to OpenAI. For
 anything else, email <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a> and you will
 get an answer within 30 days.</p>

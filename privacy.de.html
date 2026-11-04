@@ -98,21 +98,26 @@ Zusammenfassung deines jüngsten Protokolls und darf – um Fragen zu deinen Zie
 diese Profil-Körperangaben lesen und senden, einschliesslich einer aus Apple Health übernommenen
 Grösse oder eines Gewichts. Der Einwilligungsbildschirm in der App weist darauf hin, bevor du den
 Coach nutzt.</p>
-<p>Die Anfrage läuft über ein kleines Backend von uns – gehostet bei <strong>Cloudflare</strong>, mit
-<strong>Vercel</strong> als Ausweichhost, der nur genutzt wird, wenn Cloudflare nicht erreichbar ist
-– und wird an OpenAI weitergeleitet. Als unser Hosting-Anbieter verarbeitet es die dafür nötigen
+<p>Die Anfrage läuft über ein kleines Backend von uns – gehostet bei <strong>Cloudflare</strong> – und wird
+an OpenAI weitergeleitet. App-Versionen vor 1.0.6 erreichen dasselbe Backend stattdessen bei
+<strong>Vercel</strong>. Als unser Hosting-Anbieter verarbeitet es die dafür nötigen
 technischen Verbindungsdaten – etwa deine IP-Adresse und den Zeitpunkt der Anfrage; Inhalte wie das
 Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert es nicht.</p>
-<p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro Tag. Es
-zählt sie anhand deiner IP-Adresse: Das Backend (Cloudflare) nutzt die IP-Adresse ausschliesslich
-als Schlüssel eines Zählers (der Zahl der KI-Anfragen an diesem Tag, UTC) und löscht diesen Zähler
-spätestens 2 Tage nach deiner letzten KI-Anfrage. Die App sendet keine Geräte- oder
-Installationskennung, und die IP-Adresse wird nicht zusammen mit deinen Fotos, deiner Stimme,
-deinem Text, deinem Profil oder den Schätzungen gespeichert. Eine monatliche Gesamtnutzung wird
-getrennt und ohne IP-Adresse geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
+<p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro
+App-Installation und Tag. Mit jeder KI-Anfrage sendet die App eine pseudonyme Gerätekennung
+(Apples „Identifier for Vendor", IDFV) – einen von iOS erzeugten Zufallswert, der ausschliesslich
+dieser Missbrauchsbegrenzung dient. Sie wird nicht mit deinem Namen oder deiner E-Mail-Adresse
+verknüpft, ist keine Werbe-Kennung und kann sich ändern, wenn du die App entfernst (iOS behält sie,
+solange eine andere App desselben Entwicklers installiert bleibt). Das Backend
+(Cloudflare) nutzt sie ausschliesslich als Schlüssel eines täglichen Anfragezählers (UTC) und
+löscht diesen Zähler 48 Stunden nach deiner letzten KI-Anfrage. Die
+Kennung reist in derselben Anfrage wie deine Mahlzeit, wird aber nicht zusammen mit deinen Fotos,
+deiner Stimme, deinem Text, deinem Profil oder den Schätzungen gespeichert. Sendet eine App-Version
+keine Kennung, wird der Zähler stattdessen an deine IP-Adresse geknüpft, mit derselben Löschfrist.
+Eine monatliche Gesamtnutzung wird getrennt und ohne Kennung geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
 verfügbar und die Kosten unter Kontrolle zu halten (DSGVO Art. 6 Abs. 1 lit. f; DSG Art. 31
 Abs. 1). Du kannst per E-Mail widersprechen oder die KI-Schätzung einfach ausschalten. Die
-IP-Adresse wird nie verwendet, um dich über Apps oder Websites hinweg zu verfolgen.</p>
+Kennung wird nie verwendet, um dich über Apps oder Websites hinweg zu verfolgen.</p>
 <p>OpenAI gibt an, dass über seine API übermittelte Inhalte nicht zum Training seiner Modelle
 verwendet werden, und kann die Eingaben für kurze Zeit (derzeit bis zu 30 Tage) zur Missbrauchs­kontrolle
 aufbewahren, bevor sie gelöscht werden. OpenAI verarbeitet die Anfrage in den <strong>Vereinigten
@@ -150,9 +155,10 @@ Daten.</p>
       keine eigenen Anfrageprotokolle (die Worker-Protokollierung ist abgeschaltet); Cloudflare kann
       Verbindungsdaten für Netzbetrieb und Sicherheit nach seinem Auftragsverarbeitungsvertrag
       verarbeiten. Die Übermittlung stützt sich auf die EU-Standardvertragsklauseln (mit Schweizer
-      Zusatz) in diesem Vertrag.</li>
-  <li><strong>Vercel</strong> – ein Ausweichhost für dasselbe durchreichende Backend, der nur
-      genutzt wird, wenn Cloudflare nicht erreichbar ist. Vercel, Inc. ist ein US-Unternehmen, das
+      Zusatz) in diesem Vertrag. Cloudflare gibt an, unter dem Data Privacy Framework
+      (EU/Schweiz-USA) zertifiziert zu sein; wir stützen uns auf die Standardvertragsklauseln.</li>
+  <li><strong>Vercel</strong> – betreibt dasselbe durchreichende Backend nur für App-Versionen vor
+      1.0.6; ab Version 1.0.6 wird es nicht mehr genutzt. Vercel, Inc. ist ein US-Unternehmen, das
       unter dem EU-USA- und Swiss-U.S. Data Privacy Framework zertifiziert ist (Registerabruf
       21.10.2026, Active).</li>
   <li><strong>Apple</strong> – vertreibt die App und wickelt Käufe ab; und, falls du die
@@ -180,7 +186,7 @@ liegen: einen Eintrag zum Korrigieren bearbeiten, einen Eintrag oder die App zum
 dein Protokoll exportieren, die KI-Einwilligung widerrufen sowie dein Profil und den
 Apple-Health-Zugriff in den Einstellungen löschen oder deaktivieren. Da wir keine Kopie deiner
 Inhalte aufbewahren und weder Namen, Konto noch Inhalte von dir besitzen – nur den in Abschnitt 4
-beschriebenen kurzlebigen IP-Adress-Zähler –, können wir die kurzzeitige Kopie, die OpenAI
+beschriebenen kurzlebigen Anfragezähler (an die Installationskennung oder deine IP-Adresse geknüpft) –, können wir die kurzzeitige Kopie, die OpenAI
 möglicherweise hält, nicht abrufen; eine Anfrage dazu richtest du an OpenAI. Für alles
 Übrige schreib an <a href="mailto:v.skromny@bluewin.ch">v.skromny@bluewin.ch</a>, und du erhältst
 innerhalb von 30 Tagen eine Antwort.</p>
