@@ -19,7 +19,7 @@
 <main>
 <div class="eyebrow">deine Daten, dein Handy</div>
 <h1>Datenschutzerklärung</h1>
-<div class="dateline">Gültig ab 18. August 2026 · Zuletzt aktualisiert 4. November 2026 · <a href="privacy.html">English</a></div>
+<div class="dateline">Gültig ab 18. August 2026 · Zuletzt aktualisiert 8. November 2026 · <a href="privacy.html">English</a></div>
 <p class="lead">Mealog ist so gebaut, dass dein Essensprotokoll bei dir bleibt. Diese Erklärung
 beschreibt genau, was die App mit deinen Fotos, deiner Stimme, deinem Profil und deinen Einträgen
 macht – und was nie damit geschieht.</p>
@@ -50,7 +50,7 @@ freiwillig ergänzt:</p>
       Grösse, Gewicht, Geschlecht, Aktivitätslevel). All das ist freiwillig; du kannst es leer
       lassen, ändern oder jederzeit löschen.</li>
   <li><strong>Produkt-Ereignisse</strong>, also eine kurze Liste von Momenten in der App (erster
-      Start, Abschluss des Onboardings, Anzeige des Abo-Bildschirms, ein Kauf), mit einer
+      Start, Abschluss des Onboardings, erste gespeicherte Mahlzeit, Anzeige des Abo-Bildschirms, ein Kauf), mit einer
       zufälligen, von der App erzeugten ID. Sie enthalten nie Inhalte deiner Mahlzeiten oder
       Gesundheitswerte. Details und wie du sie abschaltest, stehen in Abschnitt 5.</li>
 </ul>
@@ -148,6 +148,8 @@ Produkt-Ereignissen senden. Verantwortlich ist derselbe wie in Abschnitt 1: V. S
       erstmals erlaubst). Zusätzlich gesendet: nichts.</li>
   <li><code>onboarding_completed</code> – du schliesst die Einführung ab. Zusätzlich gesendet:
       nichts.</li>
+  <li><code>meal_saved</code> – du speicherst deine erste Mahlzeit im Protokoll (einmalig gesendet). Zusätzlich
+      gesendet: nichts. Die Mahlzeit selbst, ihre Kalorien und die Art, wie du sie erfasst hast, werden nie gesendet.</li>
   <li><code>paywall_shown</code> – der Abo-Bildschirm erscheint. Zusätzlich gesendet:
       <code>trigger</code>, wo er geöffnet wurde (Onboarding oder Profil).</li>
   <li><code>complete_purchase</code> – Apple bestätigt einen Abo-Kauf. Zusätzlich gesendet:
