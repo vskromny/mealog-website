@@ -166,11 +166,8 @@ FADP principles (Art. 6) for understanding and improving the app, and you can ob
 (FADP Art. 30(2)(b)) by turning off
 Settings&nbsp;&gt; AI&nbsp;&amp;&nbsp;data&nbsp;&gt; Share usage data.</p>
 <p><strong>Who receives it.</strong> Events go to <strong>PostHog</strong>, a US company, which
-stores them in its <strong>EU cloud in Frankfurt, Germany</strong>. PostHog acts as our processor
-under its data processing agreement. Because PostHog is a US company, US authorities may be able to
-demand access to the data under US law (the CLOUD Act) even though it is stored in the EU. For any
-access from the United States, the transfer rests on the EU Standard Contractual Clauses with the
-Swiss addendum in PostHog's data processing agreement (GDPR Art. 46; FADP Art. 16).</p>
+processes them for us. Because PostHog is a US company, US authorities may be able to demand access
+to the data under US law (the CLOUD Act).</p>
 <p>We have set PostHog to <strong>discard your IP address</strong>.
 Its servers still see the IP address briefly when an event arrives, as any server does, but it is
 not stored with the event.</p>
@@ -197,16 +194,13 @@ not stored with the event.</p>
       connection data (such as IP address and time), and does not store the photo, the voice
       recording, the transcript, the text or estimate. We keep no request logs of our own (Worker
       logging is off); Cloudflare may process connection data for network operation and security
-      under its data processing agreement. Transfers rest on the EU Standard Contractual Clauses
-      (with the Swiss addendum) in that agreement. Cloudflare states that it is certified under the
-      EU-Swiss-US Data Privacy Framework; we rely on the SCCs.</li>
+      under its data processing agreement, which is part of the Cloudflare terms accepted when the account
+      was opened. Transfers rest on the EU Standard Contractual Clauses (with the Swiss addendum) in
+      that agreement.</li>
   <li><strong>Vercel</strong> — hosts the same pass-through backend for app versions before 1.0.6
-      only; version 1.0.6 and later do not use it. Vercel, Inc. is a US company certified under the EU-U.S. and
-      Swiss-U.S. Data Privacy Framework (register read 21.10.2026, Active).</li>
-  <li><strong>PostHog</strong>, a US company, stores the product events and the random analytics ID
-      described in section 5 in its EU cloud (Frankfurt, Germany), as our processor. IP addresses
-      are discarded. Transfers rest on the EU Standard Contractual Clauses (with the Swiss
-      addendum) in its data processing agreement.</li>
+      only; version 1.0.6 and later do not use it. Vercel, Inc. is a US company.</li>
+  <li><strong>PostHog</strong>, a US company, receives the product events and the random analytics ID
+      described in section 5. IP addresses are discarded.</li>
   <li><strong>Apple</strong> — distributes the app and handles any purchase; and, if you turn on
       iCloud sync, stores your private iCloud database. Apple's own privacy policy governs the App
       Store, your purchases and iCloud.</li>
