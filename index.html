@@ -297,7 +297,7 @@ html{scroll-behavior:smooth}
           <img src="assets/logo/mealog-logo.svg" alt="Mealog" width="22" height="22" style="display:block">
           <span style="font-weight:800;font-size:15px;color:#fff">Mealog</span>
         </div>
-        <p style="margin:0;font-size:12px;line-height:1.7;max-width:38ch;text-wrap:pretty">Your data stays yours. Your meal log lives on your iPhone, AI estimates are processed by OpenAI, and nothing is ever sold. See the <a href="privacy.html" style="color:#4ADE80">Privacy Policy</a>.</p>
+        <p style="margin:0;font-size:12px;line-height:1.7;max-width:38ch;text-wrap:pretty">Your meal log lives on your iPhone. AI estimates are processed by OpenAI. We do not sell your data. See the <a href="privacy.html" style="color:#4ADE80">Privacy Policy</a>.</p>
       </div>
       <div id="impressum" style="flex:0 1 auto;font-size:13px;line-height:2">
         <div style="color:#fff;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Impressum</div>
@@ -352,7 +352,7 @@ class Component extends DCLogic {
       { title: 'Snap a photo', body: 'Point your camera at the plate. Mealog identifies the dish, estimates portions and fills in calories and macros automatically.', icon: icon('<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>') },
       { title: 'Say it out loud', body: '"Chicken salad and an iced tea" — spoken logging turns a sentence into a structured entry, hands-free.', icon: icon('<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>') },
       { title: 'Trends that teach', body: 'Weekly and monthly views surface patterns — protein dips, weekend spikes — so you adjust with facts, not guilt.', icon: icon('<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>') },
-      { title: 'Gentle reminders', body: 'Smart nudges at your usual meal times. Never nagging, easy to snooze, tuned to your routine.', icon: icon('<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>') }
+      { title: 'Gentle reminders', body: 'Reminders at the meal times you choose, each one switched on or off separately.', icon: icon('<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>') }
     ];
     return {
       appStoreUrl: this.props.appStoreUrl ?? '#',
@@ -367,7 +367,7 @@ class Component extends DCLogic {
         { q: 'How accurate is the AI estimation?', a: 'Photo estimates are typically within 10\u201315% for common dishes, and every entry is editable. The more you correct, the better it adapts to your cooking and portions.' },
         { q: 'Do I need to weigh my food?', a: 'No. Mealog estimates portions visually. If you want lab-grade precision you can enter exact grams, but the app is designed for effortless, good-enough-to-act-on tracking.' },
         { q: 'Is there a free version?', a: 'Yes \u2014 you can try Mealog free. The trial includes full AI photo and voice logging so you can judge the magic before paying.' },
-        { q: 'What happens to my photos?', a: 'Photos are processed to build your entry and stored only in your account. They are never sold, shared or used for advertising.' },
+        { q: 'What happens to my photos?', a: 'After you agree in the app, photos are sent to OpenAI to build your entry. OpenAI may keep them for up to 30 days. They are stored on your device, and in your iCloud only if you turn sync on. We do not sell them or use them for advertising. Details are in the Privacy Policy.' },
         { q: 'Is Mealog available on Android?', a: 'Mealog is currently iPhone-only. Android is on the roadmap \u2014 email us and we\u2019ll notify you when it lands.' }
       ]
     };
