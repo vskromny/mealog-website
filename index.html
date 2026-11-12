@@ -5,6 +5,7 @@
 <title>Mealog — AI meal tracking for iPhone</title>
 <meta name="description" content="Mealog turns a photo or a few spoken words into a complete nutrition entry — calories, macros and portions estimated instantly, no databases to dig through.">
 <meta name="theme-color" content="#0B0E11">
+<meta name="apple-itunes-app" content="app-id=6800812845, app-argument=https://vskromny.github.io/mealog-website/">
 <link rel="icon" type="image/svg+xml" href="assets/logo/mealog-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/favicon-180.png">
@@ -317,7 +318,7 @@ html{scroll-behavior:smooth}
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;appStoreUrl&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;#&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Links&quot;}}">
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;appStoreUrl&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;https://apps.apple.com/app/id6800812845?ct=website&amp;mt=8&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Links&quot;}}">
 class Component extends DCLogic {
   componentDidMount() {
     const els = document.querySelectorAll('[data-reveal]');
@@ -355,7 +356,7 @@ class Component extends DCLogic {
       { title: 'Gentle reminders', body: 'Reminders at the meal times you choose, each one switched on or off separately.', icon: icon('<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>') }
     ];
     return {
-      appStoreUrl: this.props.appStoreUrl ?? '#',
+      appStoreUrl: this.props.appStoreUrl ?? 'https://apps.apple.com/app/id6800812845?ct=website&mt=8',
       feedLoop: meals.concat(meals),
       features,
       steps: [
