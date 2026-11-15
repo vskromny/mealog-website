@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vskromny.github.io/mealog-website/sitemap.xml
