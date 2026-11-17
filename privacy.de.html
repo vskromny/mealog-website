@@ -19,7 +19,7 @@
 <main>
 <div class="eyebrow">deine Daten, dein Handy</div>
 <h1>Datenschutzerklärung</h1>
-<div class="dateline">Gültig ab 18. August 2026 · Zuletzt aktualisiert 11. November 2026 · <a href="privacy.html">English</a></div>
+<div class="dateline">Gültig ab 18. August 2026 · Zuletzt aktualisiert 17. November 2026 · <a href="privacy.html">English</a></div>
 <p class="lead">Mealog ist so gebaut, dass dein Essensprotokoll bei dir bleibt. Diese Erklärung
 beschreibt genau, was die App mit deinen Fotos, deiner Stimme, deinem Profil und deinen Einträgen
 macht – und was nicht damit geschieht.</p>
@@ -38,7 +38,9 @@ alle hier beschriebenen personenbezogenen Daten verantwortlich ist.</p>
 freiwillig ergänzt:</p>
 <ul>
   <li><strong>Fotos</strong>, die du von deinem Essen machst.</li>
-  <li><strong>Spracheingabe</strong>, wenn du eine Mahlzeit laut beschreibst. Die Aufnahme wird nur
+  <li><strong>Spracheingabe</strong>, wenn du eine Mahlzeit laut beschreibst. Mealog fragt nach dem
+      Zugriff auf das <strong>Mikrofon</strong> (du kannst ihn jederzeit in den iOS-Einstellungen widerrufen)
+      und nimmt nur auf, wenn du eine Sprachaufnahme startest. Die Aufnahme wird nur
       zur Transkription an OpenAI gesendet und <strong>von deinem Gerät gelöscht, sobald sie
       transkribiert ist</strong>; nur der Text bleibt erhalten.</li>
   <li><strong>Text, den du eingibst</strong> – Gerichtnamen, Portionen, Korrekturen und Notizen.</li>
@@ -108,7 +110,7 @@ an OpenAI weitergeleitet. App-Versionen vor 1.0.6 erreichen dasselbe Backend sta
 technischen Verbindungsdaten – etwa deine IP-Adresse und den Zeitpunkt der Anfrage; Inhalte wie das
 Foto, die Sprachaufnahme, das Transkript, den Text oder die Schätzung speichert es nicht.</p>
 <p>Damit der Dienst für alle verfügbar bleibt, begrenzt unser Backend die KI-Anfragen pro
-App-Installation und Tag. Mit jeder KI-Anfrage sendet die App eine pseudonyme Gerätekennung
+App-Installation und Tag, bei Abonnentinnen und Abonnenten zusätzlich pro Abonnement. Mit jeder KI-Anfrage sendet die App eine pseudonyme Gerätekennung
 (Apples „Identifier for Vendor", IDFV) – einen von iOS erzeugten Zufallswert, der ausschliesslich
 dieser Missbrauchsbegrenzung dient. Sie wird nicht mit deinem Namen oder deiner E-Mail-Adresse
 verknüpft, ist keine Werbe-Kennung und kann sich ändern, wenn du die App entfernst (iOS behält sie,
@@ -118,7 +120,7 @@ löscht diesen Zähler innerhalb von 48 Stunden nach deiner letzten KI-Anfrage. 
 Kennung reist in derselben Anfrage wie deine Mahlzeit, wird aber nicht zusammen mit deinen Fotos,
 deiner Stimme, deinem Text, deinem Profil oder den Schätzungen gespeichert. (Die separate Analyse-ID aus Abschnitt 5 wird nie mit einer KI-Anfrage gesendet.) Sendet eine App-Version
 keine Kennung, wird der Zähler stattdessen an deine IP-Adresse geknüpft, mit derselben Löschfrist. Bei Abonnentinnen und Abonnenten werden Anfragen zusätzlich als Schutz vor Missbrauch pro IP-Adresse gezählt, ebenfalls mit derselben Löschfrist; eine IP-Adresse ist ein personenbezogenes Datum und wird nicht mit deinem Namen oder deinem Konto verknüpft.
-Eine monatliche Gesamtnutzung wird getrennt und ohne Kennung geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
+Wenn du Mealog-Pro-Abonnent bist, hängen aktuelle App-Versionen an jede KI-Anfrage zusätzlich Apples signierten Nachweis deines Abonnements an. Er enthält das Produkt, dessen Beginn- und Ablaufdatum und Apples Transaktionsnummer, aber keinen Namen, keine E-Mail-Adresse und keine Zahlungsdaten. Unser Backend prüft Apples Signatur, um ein echtes Abonnement zu erkennen, und verwendet einen Einweg-Hash der Transaktionsnummer als Schlüssel eines zweiten täglichen Anfragezählers als Schutz vor Missbrauch; dieser wird spätestens 48 Stunden nach deiner letzten KI-Anfrage gelöscht, den Nachweis selbst speichern wir nicht. Eine monatliche Gesamtnutzung wird getrennt und ohne Kennung geführt. Rechtsgrundlage: unser berechtigtes Interesse, den Dienst
 verfügbar und die Kosten unter Kontrolle zu halten (DSGVO Art. 6 Abs. 1 lit. f; DSG Art. 31
 Abs. 1). Du kannst per E-Mail widersprechen oder die KI-Schätzung einfach ausschalten. Die
 Kennung wird nie verwendet, um dich über Apps oder Websites hinweg zu verfolgen.</p>
@@ -250,7 +252,7 @@ liegen: einen Eintrag zum Korrigieren bearbeiten, einen Eintrag oder die App zum
 dein Protokoll exportieren, die KI-Einwilligung widerrufen sowie dein Profil und den
 Apple-Health-Zugriff in den Einstellungen löschen oder deaktivieren. Da wir keine Kopie deiner
 Inhalte aufbewahren und weder Namen, Konto noch Inhalte von dir besitzen – nur den in Abschnitt 4
-beschriebenen kurzlebigen Anfragezähler (an die Installationskennung oder deine IP-Adresse geknüpft) und die Produkt-Ereignisse aus Abschnitt 5 –, können wir die kurzzeitige Kopie, die OpenAI
+beschriebenen kurzlebigen Anfragezähler (an die Installationskennung, deine IP-Adresse oder, bei Abonnentinnen und Abonnenten, einen Einweg-Hash von Apples Transaktionsnummer geknüpft) und die Produkt-Ereignisse aus Abschnitt 5 –, können wir die kurzzeitige Kopie, die OpenAI
 möglicherweise hält, nicht abrufen; eine Anfrage dazu richtest du an OpenAI. Die Produkt-Ereignisse tragen nur eine zufällige ID, die wir dir nicht zuordnen können;
 deshalb können wir „deine“ Ereignisse auf Anfrage nicht finden. Um sie zu stoppen und die ID von
 deinem Gerät zu entfernen, schalte die Analyse in den Einstellungen aus. Bereits gesendete

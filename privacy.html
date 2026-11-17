@@ -19,7 +19,7 @@
 <main>
 <div class="eyebrow">your data, your phone</div>
 <h1>Privacy Policy</h1>
-<div class="dateline">Effective 18 August 2026 · Last updated 11 November 2026 · <a href="privacy.de.html">Deutsch</a></div>
+<div class="dateline">Effective 18 August 2026 · Last updated 17 November 2026 · <a href="privacy.de.html">Deutsch</a></div>
 <p class="lead">Mealog is built so that your meal log stays with you. This policy explains
 exactly what the app does with your photos, your voice, your profile and your entries — and
 what it does not do with them.</p>
@@ -37,7 +37,9 @@ controller of any personal data described here.</p>
 <p>Only what is needed to turn a meal into an entry, plus whatever you choose to add:</p>
 <ul>
   <li><strong>Photos</strong> you take of your food.</li>
-  <li><strong>Voice input</strong> when you describe a meal out loud. The recording is sent to
+  <li><strong>Voice input</strong> when you describe a meal out loud. Mealog asks for
+      <strong>microphone</strong> access (you can withdraw it any time in iOS Settings) and records only
+      when you start a voice recording. The recording is sent to
       OpenAI only to produce a transcript, and is <strong>deleted from your device as soon as it
       has been transcribed</strong>; only the text is kept.</li>
   <li><strong>Text you type</strong> — dish names, portions, corrections and notes.</li>
@@ -99,7 +101,7 @@ it to OpenAI. App versions before 1.0.6 reach the same backend hosted on <strong
 instead. As our hosting provider, it processes the technical connection data needed to do that,
 such as your IP address and the time of the request; it does not store the photo, the voice
 recording, the transcript, the text or the estimate.</p>
-<p>To keep the service available to everyone, our backend limits AI requests per app installation
+<p>To keep the service available to everyone, our backend limits AI requests per app installation and, for subscribers, per subscription
 each day. With each AI request, the app sends a pseudonymous device identifier (Apple's
 "identifier for vendor", IDFV) — a random value created by iOS, used only to apply those abuse
 limits. It is not combined with your name or email, it is not an advertising identifier, and it may
@@ -107,7 +109,7 @@ change if you remove the app (iOS keeps it while another app from the same devel
 installed). The backend (Cloudflare) uses it only as the key of a daily request counter (UTC) and
 deletes that counter within 48 hours of your last AI request. The identifier travels in the same request as your meal, but it is not
 stored with your photos, voice, text, profile or estimates. (The separate analytics ID in section 5 never travels with an AI request.) If an app version sends no identifier,
-the counter is keyed to your IP address instead, with the same deletion period. Requests from subscribers are also counted per IP address as a safeguard against misuse, again with the same deletion period; an IP address is personal data, and it is not combined with your name or account. A separate monthly usage total is kept without any
+the counter is keyed to your IP address instead, with the same deletion period. Requests from subscribers are also counted per IP address as a safeguard against misuse, again with the same deletion period; an IP address is personal data, and it is not combined with your name or account. If you are a Mealog Pro subscriber, current app versions also attach Apple's signed record of your subscription to each AI request. It contains the product, its dates and Apple's transaction number, but no name, email or payment details. Our backend checks Apple's signature to recognise a genuine subscription and uses a one-way hash of the transaction number as the key of a second daily request counter, a safeguard against misuse, deleted within 48 hours of your last AI request; we do not store the record itself. A separate monthly usage total is kept without any
 identifier. Legal basis: our legitimate interest in keeping the service available and its costs
 under control (GDPR Art. 6(1)(f); Swiss FADP Art. 31(1)). You can object by email or simply turn off
 AI estimation. The identifier is never used to track you across apps or websites.</p>
@@ -230,7 +232,7 @@ Information Commissioner, and in the EU/EEA your local data-protection authority
 phone: edit an entry to correct it, delete an entry or the app to erase it, export your log to take
 it elsewhere, withdraw AI consent and clear or disable your profile and Apple Health access in
 Settings. Because we keep no copy of your content — and hold no name, account or content of yours,
-only the short-lived request counters (keyed to the installation identifier, or to your IP address) described in section 4 and the product events described in section 5 — we cannot look up or retrieve the
+only the short-lived request counters (keyed to the installation identifier, to your IP address or, for subscribers, to a one-way hash of Apple's transaction number) described in section 4 and the product events described in section 5 — we cannot look up or retrieve the
 short-lived copy OpenAI may hold; a request about that goes to OpenAI. The product events carry only a random ID that we cannot connect to you, so we
 cannot find “your” events on request. To stop them and remove the ID from your device, turn
 analytics off in Settings. Events already sent are deleted automatically when the retention period
