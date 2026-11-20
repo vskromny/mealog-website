@@ -53,6 +53,7 @@ address { font-style: normal; font-size: 15px; color: #3F464F; margin-top: 12px;
 
 footer { background: #0B0E11; color: #5A616B; }
 .foot-in { max-width: 760px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; font-size: 12px; }
-.foot-in nav { display: flex; gap: 18px; }
+.foot-in nav { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.foot-in nav a { white-space: nowrap; }
 .foot-in a { color: #9AA4AE; }
 .foot-in a:hover { color: #4ADE80; }
